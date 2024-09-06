@@ -258,7 +258,7 @@ function waitForData() {
                 if (i === index) {
                     stepDiv.classList.add('current_step');
                 }
-                stepDiv.innerHTML = data[`index_${i}`].step_of_popup;
+                stepDiv.innerHTML = i + '. ' + data[`index_${i}`].step_of_popup;
                 popupDiv.appendChild(stepDiv);
             }
             contentDiv.appendChild(popupDiv);
@@ -287,29 +287,8 @@ function waitForData() {
             document.getElementById('close_popup_btn').addEventListener('click', () => closePopUp());
             document.getElementById('popup_button_1').addEventListener('click', () => showPopUp());
 
-            // function logicOfButtons(){
-            //     const modalWindow = document.getElementById('popup_window_id')
-
-            //     if (!modalWindow.classList.contains('disabled') && !pageData.hasOwnProperty('test')){
-            //         //console.log('Модальное окно закрыто и мы на странице теории!')
-            //     } else if (!modalWindow.classList.contains('enabled') && !pageData.hasOwnProperty('test')){
-            //         //console.log('Модальное окно открыто и мы на странице теории!')
-            //     } else if (!modalWindow.classList.contains('disabled') && pageData.hasOwnProperty('test')){
-            //         //console.log('Модальное окно закрыто и мы на странице теста!')
-            //     } else if (!modalWindow.classList.contains('enabled') && pageData.hasOwnProperty('test')){
-            //         //console.log('Модальное окно открыто и мы на странице теста!')
-            //     }
-            //     if (answerBtn.classList.contains('gray_dis')){
-            //         //console.log('Кнопка ответа заблокированна!!!')
-            //     } else {
-            //         //console.log('Кнопка ответа разблокированна!!!')
-            //     }
-            // }
         }
 
-
-
-        // const stepMarkerPlace = document.getElementsByClassName('step_marker');
         // Функция для создания маркеров страниц
         function createMarkers() {
             

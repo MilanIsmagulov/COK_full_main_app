@@ -19,6 +19,37 @@ a{
     color: #000;
 }
 
+.main_logo2{
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.main_logo2:hover{
+    transform: scale(1.02);
+}
+
+.main_logo2:active {
+    transform: scale(1.02);
+    animation: shakeAnimation  0.5s ease;
+}
+
+@keyframes shakeAnimation  {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-2deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+    75% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
 
 .main_container{
     position: absolute;

@@ -5,7 +5,7 @@ let title_of_eom = themeOfDEC;
 const data = {
     "index_1":{
         "subtitle": "dfgdgdgdgdgdgdg 1",
-        "step_of_popup": "<b>1</b> fffffffffffffffffff fffffffffffffffffffff",
+        "step_of_popup": "fffffffffffffffffff fffffffffffffffffffff",
         "paragraph_1":[
             {"text": "<b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolores consequatur temporibus pariatur voluptatem eius ea asperiores, fugit est ducimus dolor possimus officiis reiciendis nesciunt perferendis facilis? Beatae ea culpa a modi! Harum ex inventore laborum officiis ipsa.</b> Soluta voluptate consequuntur a ex est qui. Earum dignissimos exercitationem aperiam dolore veniam deserunt beatae, blanditiis vero ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? Error illo earum laudantium facilis."},
             {"image": false, "image_path": "./content/test_image.png"}
@@ -117,7 +117,7 @@ const data = {
     },
     "index_8":{
         "subtitle": "subtitle 7",
-        "step_of_popup": "7. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit inventore dolor beatae iusto, laudantium deleniti aliquid maxime, cumque quo facilis esse nobis quis consequatur voluptate?",
+        "step_of_popup": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit inventore dolor beatae iusto, laudantium deleniti aliquid maxime, cumque quo facilis esse nobis quis consequatur voluptate?",
         "paragraph_1":[
             {"image": true, "image_path": "./content/test_image.png"},
             {"text":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolores consequatur temporibus pariatur voluptatem eius ea asperiores, fugit est ducimus dolor possimus officiis reiciendis nesciunt perferendis facilis? Beatae ea culpa a modi! Harum ex inventore laborum officiis ipsa. Soluta voluptate consequuntur a ex est qui. Earum dignissimos exercitationem aperiam dolore veniam deserunt beatae, blanditiis vero <b>ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? Error illo earum laudantium facili blanditiis vero ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? Error illo earum laudantium facilis.Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolores consequatur temporibus pariatur voluptatem eius ea asperiores, fugit est</b> ducimus dolor possimus officiis reiciendis nesciunt perferendis facilis? Beatae ea culpa a modi! Harum ex inventore laborum officiis ipsa. Soluta voluptate consequuntur a ex est qui. Earum dignissimos exercitationem aperiam dolore veniam deserunt beatae, blanditiis vero ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? Error illo earum laudantium facilis.Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolores consequatur temporibus pariatur voluptatem eius ea asperiores, fugit est ducimus dolor possimus officiis reiciendis nesciunt perferendis facilis? Beatae ea culpa a modi! Harum ex inventore laborum officiis ipsa. Soluta voluptate consequuntur a ex est qui. Earum dignissimos exercitationem aperiam dolore veniam deserunt beatae, blanditiis vero ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? Error illo earum laudantium facilis."},

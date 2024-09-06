@@ -415,7 +415,19 @@ function waitForData() {
         }
     });
 
+    let resizeTimeout;
 
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const width = window.innerWidth;
+            if (width >= 1090 && width <= 1110) {
+                window.location.reload();
+            } else if (width >= 1190 && width <= 1210) {
+                window.location.reload();
+            }
+        }, 2); // Adjust debounce time as needed
+    });
 
     }
 }

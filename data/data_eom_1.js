@@ -17,7 +17,7 @@ window.dataLoaded = false;
     let pathToVideo = './content/page_content/test_video.mp4'; // если typeOfButtons = 'video'
     let videoTitle = ''; // если typeOfButtons = 'video'
 
-    let background_type = dropType; 
+    let background_type = dropType;
 
     let literaListEOM1 = 
     `<b>Гонсалес, Р. Ц., Вудс, Р. Е.</b> Цифровая обработка изображений / Р. Ц. Гонсалес, Р. Е. Вудс. — 3-е изд. — М.: Техносфера, 2012. — 1072 с.

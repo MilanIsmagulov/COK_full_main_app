@@ -37,28 +37,6 @@ popupMethodsWindow.forEach((popup, index) => {
     popup.appendChild(popUpElemUl);
 });
 
-let popUpKeyWordsArr = keyWords.split('\n');
-
-popUpKeyWordsArr.forEach(function (index){
-    let paragraph = document.createElement('p')
-    let a = popUpKeyWordsArr.filter((index) =>{if (index %2 === 0){
-        return true;
-    }})
-    let b = popUpKeyWordsArr.filter((index) =>{if (index %2 !== 0){
-        return true;
-    }})
-
-    if (a[index] === undefined || b[index] === undefined ){
-        return 0;
-    } else {
-        paragraph.innerHTML = `<span>${a[index]}</span><br> ${b[index]}`
-    }
-    
-    paragraph.classList.add('popup_tex_content', 'key_word_text')
-    popupKeyWords.appendChild(paragraph)
-
-})
-
 let infoPopUpPlc = document.querySelectorAll('.popup_tex_content');
 let infoContentText = infoContent.split('\n');
 infoContentText.forEach(function(item, index){
@@ -66,3 +44,30 @@ infoContentText.forEach(function(item, index){
         infoPopUpPlc[index].innerHTML = item.trim(); // Удаляем лишние пробелы и записываем текст
     }
 });
+
+let popUpKeyWordsArr = keyWords.split('\n');
+
+// Разделяем массив на четные и нечетные индексы
+let a = popUpKeyWordsArr.filter((_, index) => index % 2 === 0);
+let b = popUpKeyWordsArr.filter((_, index) => index % 2 !== 0);
+
+// Проходим по самому длинному массиву
+let maxLength = Math.max(a.length, b.length);
+
+for (let i = 0; i < maxLength; i++) {
+    let paragraph = document.createElement('p');
+
+    // Получаем элементы с проверкой на undefined
+    let aElement = a[i] !== undefined ? `<span>${a[i]}</span><br>` : '';
+    let bElement = b[i] !== undefined ? b[i] : '';
+
+    // Заполняем абзац
+    paragraph.innerHTML = `${aElement} ${bElement}`;
+    
+    // Добавляем классы
+    paragraph.classList.add('popup_tex_content', 'key_word_text');
+
+    // Добавляем абзац в контейнер
+    popupKeyWords.appendChild(paragraph);
+};
+
