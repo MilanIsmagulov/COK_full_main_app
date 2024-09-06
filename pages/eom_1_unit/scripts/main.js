@@ -425,6 +425,8 @@ function waitForData() {
                 window.location.reload();
             } else if (width >= 1190 && width <= 1210) {
                 window.location.reload();
+            } else if (width >= 719 && width <= 750) {
+                window.location.reload();
             }
         }, 2); // Adjust debounce time as needed
     });
