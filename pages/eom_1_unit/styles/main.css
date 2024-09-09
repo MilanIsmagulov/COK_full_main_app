@@ -15,6 +15,14 @@ body, html {
     overflow-x: hidden;
 }
 
+html {
+    background-color: #e9e9e9 !important;
+}
+
+.zoomable{
+    cursor: zoom-in;
+}
+
 header, footer {
     position: fixed;
     left: 0;

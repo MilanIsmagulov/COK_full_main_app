@@ -74,7 +74,14 @@ function waitForData() {
             if (imageInfo && test.find(item => item.type === 1) || test.find(item => item.type === 2)) {
                 const imageDiv = document.createElement('div');
                 imageDiv.className = 'image_test_type_2';
-                const img = document.createElement('img');
+                let img;
+                if (imageInfo.image_path.includes(".jpg") || imageInfo.image_path.includes(".png")) {
+                    img = document.createElement('img');
+                } else if (imageInfo.image_path.includes(".mp4")) {
+                    img = document.createElement('video');
+                    img.controls = "controls";
+                }
+                // const img = document.createElement('img');
                 img.src = imageInfo.image_path;
                 img.alt = 'Проверьте image_path';
                 imageDiv.appendChild(img);

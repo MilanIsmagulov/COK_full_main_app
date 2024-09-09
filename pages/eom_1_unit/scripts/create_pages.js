@@ -50,6 +50,7 @@ function createTextWithImage(paragraph) {
             let imgElement;
             if (item.image_path.includes(".jpg") || item.image_path.includes(".png")) {
                 imgElement = document.createElement('img');
+                imgElement.classList = 'zoomable';
             } else if (item.image_path.includes(".mp4")) {
                 imgElement = document.createElement('video');
                 imgElement.controls = "controls";
@@ -90,6 +91,7 @@ function createOnlyImage(paragraph) {
             let imgElement;
             if (item.image_path.includes(".jpg") || item.image_path.includes(".png")) {
                 imgElement = document.createElement('img');
+                imgElement.classList = 'zoomable';
             } else if (item.image_path.includes(".mp4")) {
                 imgElement = document.createElement('video');
                 imgElement.controls = "controls";
@@ -191,4 +193,30 @@ function displayPage(index) {
         }
 
     } 
+    // Зуууум
+    const zoomableImages = document.querySelectorAll('.zoomable');
+
+    // Для сенсорных устройств отслеживаем время между тапами
+    let lastTouchTime = 0;
+
+    zoomableImages.forEach(image => {
+        // Добавляем обработчик для двойного клика
+        image.addEventListener('dblclick', function(event) {
+            event.preventDefault();
+            zoom.to({ element: event.target });
+        });
+
+        // Обрабатываем двойной тап на сенсорных устройствах
+        image.addEventListener('touchend', function(event) {
+            const currentTime = new Date().getTime();
+            const timeDiff = currentTime - lastTouchTime;
+
+            // Если время между тапами меньше 300 мс, считаем это двойным тапом
+            if (timeDiff < 300 && timeDiff > 0) {
+                event.preventDefault();
+                zoom.to({ element: event.target });
+            }
+            lastTouchTime = currentTime;
+        });
+    });
 }

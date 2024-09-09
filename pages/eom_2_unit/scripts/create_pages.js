@@ -63,6 +63,7 @@ function waitForData() {
                     let imgElement;
                     if (item.image_path.includes(".jpg") || item.image_path.includes(".png")) {
                         imgElement = document.createElement('img');
+                        imgElement.classList = 'zoomable';
                     } else if (item.image_path.includes(".mp4")) {
                         imgElement = document.createElement('video');
                         imgElement.controls = "controls";
@@ -104,6 +105,7 @@ function waitForData() {
                     let imgElement;
                     if (item.image_path.includes(".jpg") || item.image_path.includes(".png")) {
                         imgElement = document.createElement('img');
+                        imgElement.classList = 'zoomable';
                     } else if (item.image_path.includes(".mp4")) {
                         imgElement = document.createElement('video');
                         imgElement.controls = "controls";
@@ -226,6 +228,9 @@ function waitForData() {
                             case 6:
                                 replaceScript('./scripts/script_of_tests/test_type_5.js', 'test-script');
                                 break;
+                            case 7:
+                                replaceScript('./scripts/script_of_tests/test_type_6.js', 'test-script');
+                                break;
                             default:
                                 console.log('Неизвестный тип теста');
                                 break;
@@ -287,6 +292,32 @@ function waitForData() {
             document.getElementById('close_popup_btn').addEventListener('click', () => closePopUp());
             document.getElementById('popup_button_1').addEventListener('click', () => showPopUp());
 
+            // Зуууум
+            const zoomableImages = document.querySelectorAll('.zoomable');
+
+            // Для сенсорных устройств отслеживаем время между тапами
+            let lastTouchTime = 0;
+        
+            zoomableImages.forEach(image => {
+                // Добавляем обработчик для двойного клика
+                image.addEventListener('dblclick', function(event) {
+                    event.preventDefault();
+                    zoom.to({ element: event.target });
+                });
+        
+                // Обрабатываем двойной тап на сенсорных устройствах
+                image.addEventListener('touchend', function(event) {
+                    const currentTime = new Date().getTime();
+                    const timeDiff = currentTime - lastTouchTime;
+        
+                    // Если время между тапами меньше 300 мс, считаем это двойным тапом
+                    if (timeDiff < 300 && timeDiff > 0) {
+                        event.preventDefault();
+                        zoom.to({ element: event.target });
+                    }
+                    lastTouchTime = currentTime;
+                });
+            });
         }
 
         // Функция для создания маркеров страниц

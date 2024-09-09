@@ -63,16 +63,16 @@ window.dataLoaded = false;
             "paragraph_1":[
                 {"paragraph_title": "<b>Lorem ipsum dolor sit amet consectetur adipisicing elit.</b>"},
                 {"text": "<b>Lorem ipsum dolor sit amet consectetur adipisicing elit.</b>"},
-                {"image": false, "image_path": "./content/test_image.png"}
+                {"image": false, "image_path": "./content/page_content/test_image.png"}
             ],
             "paragraph_2":[
                 {"paragraph_title": "<b>Lorem ipsum dolor sit amet consectetur adipisicing elit.</b>"},
                 {"text": false},
-                {"image": true, "image_path": "./content/video/test_video.mp4", "img_sign": " "}
+                {"image": true, "image_path": "./content/page_content/test_image.png"}
             ],
             "paragraph_3":[
                 {"text":"<b><i>Lorem ipsum dolor sit amet consectetur</i></b> adipisicing elit."},
-                {"image": true, "image_path": "./content/video/test_video.mp4", "img_sign": " "}
+                {"image": true, "image_path": "./content/page_content/test_image.png"}
             ],
             "paragraph_4":[
                 {"text":" Lorem ipsum dolor sit amet consectetur adipisicing elit."},

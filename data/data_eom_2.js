@@ -37,7 +37,7 @@ const data = {
                 "Four Answer"
             ]},
             {"correct_answer": [1]},
-            {"image": true, "image_path": "./content/test_image.png"}
+            {"image": true, "image_path": "./content/video/test_video.mp4"}
         ],
     },
     "index_3":{
@@ -98,7 +98,7 @@ const data = {
                 "Harum ex inventore laborum officiis ipsa. Soluta voluptate consequuntur a ex est qui. Earum dignissimos exercitationem aperiam dolore veniam deserunt beatae, blanditiis vero ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? Error illo earum laudantium facilis."
             ]},
             {"correct_answer": [0, 1]},
-            {"image": false, "image_path": "./content/test_image.png"}
+            {"image": true, "image_path": "./content/video/test_video.mp4"}
         ],
     },
     "index_7":{
@@ -166,7 +166,7 @@ const data = {
             {"type": 2},
             {"description": "<b>Lorem ipsum dolor sit amet</b> consectetur adipisicing elit. Recusandae dolores consequatur temporibus pariatur voluptatem eius ea asperiores, fugit est ducimus dolor possimus officiis reiciendis nesciunt perferendis facilis? Beatae ea culpa a modi! Harum ex inventore laborum officiis ipsa. Soluta voluptate consequuntur a ex est qui. Earum dignissimos exercitationem aperiam dolore veniam deserunt beatae, blanditiis vero ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? "},
             {"test_with_text": "{=Бубльгум, =Баблгам, =бубльгум, =баблгам}"},
-            {"image": true, "image_path": "./content/test_image.png"},
+            {"image": true, "image_path": "./content/video/test_video.mp4"}
         ],
     },
     "index_12":{
@@ -176,7 +176,7 @@ const data = {
             {"type": 2},
             {"description": "Тут пишем описание задания"},
             {"test_with_text_2": "Россия {=священная} наша {=держава}. Россия {=священная} наша {=держава}. Россия {=священная} наша {=держава}.Россия {=священная} наша {=держава}.Россия {=священная} наша {=держава}"},
-            {"image": true, "image_path": "./content/test_image.png"},
+            {"image": true, "image_path": "./content/video/test_video.mp4"}
         ],
     },
     "index_13":{
@@ -184,7 +184,7 @@ const data = {
         "step_of_popup": "step 2",
         "test":[
             {"type": 3},
-            {"image": true, "image_path": "./content/test_image.png"},
+            {"image": true, "image_path": "./content/video/test_video.mp4"},
             {"answers": [
                 "First Answer",
                 "Second Answer",
@@ -215,12 +215,13 @@ const data = {
         "step_of_popup": "step 2",
         "test":[
             {"type": 4},
-            {"image": "['./content/tests_content/03_01.png', './content/tests_content/03_02.png', './content/tests_content/03_03.png']"},
+            {"image": "['./content/tests_content/03_01.png', './content/tests_content/03_02.png', './content/tests_content/03_03.png', './content/tests_content/03_03.png', './content/tests_content/03_03.png']"},
             {"answers": [
                 "Шибер",
                 "Клин",
                 "Диск",
-                
+                "ДисВАЫВААЫВк",
+                "КлиВЫАЫАЫАВФЫФн",
             ]}
         ],
     },
@@ -257,6 +258,20 @@ const data = {
         ],
     },
     "index_18":{
+        "subtitle": "subtitle 3333",
+        "step_of_popup": "step 2",
+        "test":[
+            {"type": 7},
+            {"anwserArr2": ['Вы случайно включили канал...', 'Старуха из «Сказки о рыбаке...»', 'Успешный художник...', 'Вы стараетесь хорошо учиться...', 'Вам нравится перед засыпанием...','Вы остались после работы...', 'Сотруднику пообещали премию...', 'Внезапно начавшийся дождик...', 'Некоторым детям родители...','Вы сегодня не выспались...', 'Чтобы избежать угона...', 'Ваш сын-школьник читает книгу...']},
+            {"answersInCol": [
+                ['Вы случайно включили канал...', 'Старуха из «Сказки о рыбаке...»', 'Успешный художник...', 'Вы стараетесь хорошо учиться...', 'Вам нравится перед засыпанием...'],
+                ['Вы остались после работы...', 'Сотруднику пообещали премию...', 'Внезапно начавшийся дождик...', 'Некоторым детям родители...'],
+                ['Вы сегодня не выспались...', 'Чтобы избежать угона...', 'Ваш сын-школьник читает книгу...']
+            ]},
+            {"columns": ['Внешняя', 'Внутренняя', 'Черешня']}
+        ],
+    },
+    "index_19":{
         "subtitle": "Тут типа результаты",
         "step_of_popup": "Тут типа результаты",
         "result":[]

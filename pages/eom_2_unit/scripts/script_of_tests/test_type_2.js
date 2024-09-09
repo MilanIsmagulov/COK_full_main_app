@@ -20,7 +20,14 @@ mainWrapper.classList.add('main_wrapper');
 
 // Check if an image should be displayed
 if (imageObj && imageObj.image) {
-    var imgElement = document.createElement('img');
+    let imgElement;
+    if (imageObj.image_path.includes(".jpg") || imageObj.image_path.includes(".png")) {
+        imgElement = document.createElement('img');
+    } else if (imageObj.image_path.includes(".mp4")) {
+        imgElement = document.createElement('video');
+        imgElement.controls = "controls";
+    }
+    // var imgElement = document.createElement('img');
     imgElement.src = imageObj.image_path
     imgElement.alt = 'Test Image';
     imgElement.className = 'test-image';
