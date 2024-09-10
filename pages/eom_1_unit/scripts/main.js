@@ -86,6 +86,48 @@ function waitForData() {
         contentWindow.appendChild(contentWindowRight);
 
         const themesNameArr = themesOfEOM1.split('\n');
+
+        function adjustContentDiv(typeOfMenu) {
+            const contentDiv = document.querySelector('.content__div');
+            const headerHeight = document.querySelector('#header').clientHeight;
+            let newHeight;
+        
+            switch(typeOfMenu) {
+                case 'tiles':
+                    contentDiv.style.height = (window.innerHeight + headerHeight + 280) + 'px';
+                    let tilesField = document.querySelector('.content__div_center');
+                    newHeight = tilesField.clientHeight + 300;
+                    tilesField.style.height = newHeight + 'px';
+                    break;
+        
+                case 'hexagon':
+                    contentDiv.style.height = (window.innerHeight + headerHeight + 50) + 'px';
+                    let hexagonField = document.querySelector('.content__div_center');
+                    newHeight = hexagonField.clientHeight + 30;
+                    hexagonField.style.height = newHeight + 'px';
+                    break;
+        
+                case 'lightning':       
+                    let lightningField = document.querySelector('.content__div_center');            
+                    if (window.innerWidth <= 750) { // Для маленьких экранов (мобильные устройства)
+                        lightningField.style.setProperty('height', 'initial', 'important');
+                        contentDiv.style.setProperty('height', 'initial', 'important');
+                        
+                    } else if (window.innerWidth > 750 && window.innerWidth <= 1175) { // Для средних экранов (планшеты)
+                        contentDiv.style.height = (window.innerHeight - headerHeight + 120) + 'px';
+                        newHeight = lightningField.clientHeight + 250;
+                        lightningField.style.height = newHeight + 'px';
+                    } else { // Для больших экранов (настольные компьютеры)
+                        contentDiv.style.height = (window.innerHeight - headerHeight - 60) + 'px';
+                        newHeight = lightningField.clientHeight - 0;
+                        lightningField.style.height = newHeight + 'px';
+                    }
+                    break;              
+                    
+                default:
+                    console.error('Unknown menu type');
+            }
+        }
         
         if (typeOfButtons === 'hexagon') {
             let numberOfColumns, numberOfRows;
@@ -115,7 +157,6 @@ function waitForData() {
                     numberOfColumns = 2;
                     numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
                 }
-
             }
         
             function createHexagons() {
@@ -143,24 +184,16 @@ function waitForData() {
                         item.classList.add('hidden_block');
                     }
                 });
-        
-                adjustHexagonFieldHeight();
+
             }
             let hexagonField = document.querySelector('.content__div_center');
             console.log(hexagonField.clientHeigh);
-            function adjustHexagonFieldHeight() {
-                // Изменение высоты контейнера в зависимости от количества строк
 
-                let hexagonHeight = hexagonField.clientHeigh * 250; // Высчитываем нужную высоту
-                
-                hexagonField.style.height = `${hexagonHeight}px`; // Применяем новую высоту
-            
-            }
         
             // Первичная инициализация сетки
             changeRowsAndColumns();
             createHexagons();
-        
+            adjustContentDiv('hexagon');
             // Добавляем обработчик изменения размеров окна
             window.addEventListener('resize', () => {
                 changeRowsAndColumns();
@@ -221,36 +254,37 @@ function waitForData() {
                     item.classList.add('small');
                 });
             } 
-            let contentDivTiles = document.querySelector('.content__div');
-            contentDivTiles.style.height = (window.innerHeight + (document.querySelector('#header').clientHeight) - 280) + 'px';
-            let tilesField = document.querySelector('.content__div_center');
-            // Увеличиваем высоту на 100 пикселей
-            let newHeight = tilesField.clientHeight + 30;
-            // Применяем новую высоту
-            tilesField.style.height = newHeight + 'px';
+            adjustContentDiv('lightning');
 
         } else if (typeOfButtons === 'tiles') {
             const themesNameArr = themesOfEOM1.split('\n');
-            let numberOfColumns, numberOfRows, centralRowIndex;
-            // Определение количества строк и колонок
-            if (themesNameArr.length === 12) {
-                numberOfColumns = 4;
-                numberOfRows = 4;
-            } else if (themesNameArr.length <= 9) {
-                numberOfColumns = Math.ceil(themesNameArr.length / 4);
-                numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
-            } else if (themesNameArr.length <= 15) {
-                numberOfColumns = 5;
-                numberOfRows = 3;  // Увеличиваем количество строк
-            } else if (themesNameArr.length <= 18) {
-                numberOfColumns = 5;
-                numberOfRows = 4;  // Увеличиваем количество строк
-            } else if (themesNameArr.length <= 20) {
-                numberOfColumns = 5;
-                numberOfRows = 4;  // Увеличиваем количество строк
-            } else {
-                numberOfColumns = Math.ceil(themesNameArr.length / 4);
-                numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
+            let numberOfColumns, numberOfRows;
+        
+            function changeRowsAndColumns() {
+                if (window.innerWidth > 1175) {
+                    if (themesNameArr.length === 12) {
+                        numberOfColumns = 4;
+                        numberOfRows = 3;
+                    } else if (themesNameArr.length <= 9) {
+                        numberOfColumns = 4;
+                        numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
+                    } else if (themesNameArr.length <= 15) {
+                        numberOfColumns = 5;
+                        numberOfRows = 3;
+                    } else if (themesNameArr.length <= 20) {
+                        numberOfColumns = 5;
+                        numberOfRows = 4;
+                    } else {
+                        numberOfColumns = 4;
+                        numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
+                    }
+                } else if (window.innerWidth > 720 && window.innerWidth <= 1175) {
+                    numberOfColumns = 3;
+                    numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
+                } else if (window.innerWidth <= 720) {
+                    numberOfColumns = 2;
+                    numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
+                }
             }
 
 
@@ -304,14 +338,8 @@ function waitForData() {
             });
 
             console.log(window.innerHeight)
-            
-            let contentDivTiles = document.querySelector('.content__div');
-            contentDivTiles.style.height = (window.innerHeight - document.querySelector('#header').clientHeight - 100) + 'px';
-            let tilesField = document.querySelector('.content__div_center');
-            // Увеличиваем высоту на 100 пикселей
-            let newHeight = tilesField.clientHeight - 30;
-            // Применяем новую высоту
-            tilesField.style.height = newHeight + 'px';
+            adjustContentDiv('tiles');
+
 
         } else if (typeOfButtons === 'video') {
             let contentDiv = document.querySelector('#content');
@@ -391,8 +419,7 @@ function waitForData() {
         setTimeout(waitForData, location.reload(),  50);
     }
 
-    let viewportHeight = window.innerHeight;
-    let blackHeaderHeight = document.querySelector('#header').clientHeight;
+
     
     window.addEventListener('resize', function(){
         if (typeOfButtons === 'video') { // Проверьте правильность переменной
@@ -404,16 +431,8 @@ function waitForData() {
         }
     });
 
-    window.addEventListener('resize', function(){
-        if (typeOfButtons === 'lightning') { // Проверьте правильность переменной
-            let videoContentDiv = document.querySelector('.content__div');
-            if (window.innerWidth <= 1100){
-                videoContentDiv.style.height = (viewportHeight - blackHeaderHeight * 2 + 225 + 10) + 'px'; // Устанавливаем важное свойство стиля
-            } else {
-                videoContentDiv.style.height = (viewportHeight - blackHeaderHeight * 2 + 10) + 'px';
-            }
-        }
-    });
+
+
 
     let resizeTimeout;
 
@@ -437,10 +456,10 @@ function waitForData() {
 let toMenuBtn = document.querySelector('#backward_button');
 toMenuBtn.onclick = () => {
     if (document.getElementById('content__litera_btn_1')) {
-        // Элемент с id 'myElement' существует
+        // Элемент с id 'content__litera_btn_1' существует
         location.href='../../index.html';
     } else {
-        // Элемент с id 'myElement' не существует
+        // Элемент с id 'content__litera_btn_1' не существует
         window.location.reload();
     }
     //

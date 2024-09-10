@@ -1014,11 +1014,66 @@ body, html {
     .video_timing{
         width: initial !important;
     }
+    .small {
+        width: 250px !important;
+    }
+    .themes_lightning {
+        font-size: 11px !important;
+        text-align: start;
+        margin: 5px;
+        margin-bottom: 0;
+        -webkit-transform: skewX(10deg);
+        -moz-transform: skewX(10deg);
+        -ms-transform: skewX(10deg);
+        -o-transform: skewX(10deg);
+        transform: skewX(10deg);
+    }
+    .lightning {
+        -webkit-transform: skewX(-10deg);
+        -moz-transform: skewX(-10deg);
+        -ms-transform: skewX(-10deg);
+        -o-transform: skewX(-10deg);
+        transform: skewX(-10deg);
+    }
+}
+
+@media (max-width: 750px){
+    .small {
+        height: 150px !important;
+        width: 250px !important;
+    }
+    .themes_lightning {
+        font-size: 11px !important;
+        text-align: start;
+        margin: 5px;
+        margin-bottom: 0;
+        -webkit-transform: skewX(0deg);
+        -moz-transform: skewX(0deg);
+        -ms-transform: skewX(0deg);
+        -o-transform: skewX(0deg);
+        transform: skewX(0deg);
+    }
+    .lightning {
+        -webkit-transform: skewX(-0deg);
+        -moz-transform: skewX(-0deg);
+        -ms-transform: skewX(-0deg);
+        -o-transform: skewX(-0deg);
+        transform: skewX(-0deg);
+    }
+    .lightning{
+        margin: 0;
+    }
 }
 
 @media (max-width: 720px){
     .content__div_center{
         margin-left: -70px;
+    }
+    .lightning{
+        margin: 0;
+    }
+    .small {
+        width: 200px !important;
     }
 }
 
@@ -1040,19 +1095,13 @@ body, html {
         text-align: start;
         margin: 5px;
         margin-bottom: 0;
-        -webkit-transform: skewX(10deg);
-        -moz-transform: skewX(10deg);
-        -ms-transform: skewX(10deg);
-        -o-transform: skewX(10deg);
-        transform: skewX(10deg);
     }
-
-    .lightning {
-        -webkit-transform: skewX(-10deg);
-        -moz-transform: skewX(-10deg);
-        -ms-transform: skewX(-10deg);
-        -o-transform: skewX(-10deg);
-        transform: skewX(-10deg);
+    .lightning{
+        margin: 0;
+        flex-direction: row !important;
+    }
+    .small {
+        width: 300px !important;
     }
 }
 
@@ -1078,25 +1127,11 @@ body, html {
         margin-top: 15px;
     }
 
-
     .content__div_center {
         flex-direction: column !important;
     }
-
-    .themes_lightning {
-        -webkit-transform: skewX(0deg);
-        -moz-transform: skewX(0deg);
-        -ms-transform: skewX(0deg);
-        -o-transform: skewX(0deg);
-        transform: skewX(0deg);
-    }
-
-    .lightning {
-        -webkit-transform: skewX(0deg);
-        -moz-transform: skewX(0deg);
-        -ms-transform: skewX(0deg);
-        -o-transform: skewX(0deg);
-        transform: skewX(0deg);
+    .lightning{
+        margin: 0;
     }
 }
 

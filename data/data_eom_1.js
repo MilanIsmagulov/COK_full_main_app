@@ -2,7 +2,7 @@ window.dataLoaded = false;
     let title_of_eom = themeOfDEC;
     let methodRecomendation = 'fghfghfhfg Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste fugiat voluptatum quos rerum, repudiandae doloribus dolores pariatur explicabo laborum corporis!';
     let dropType = 2;
-    let typeOfButtons = 'hexagon'; // Можер быть "hexagon", "lightning", "tiles" или "video";
+    let typeOfButtons = 'lightning'; // Можер быть "hexagon", "lightning", "tiles" или "video";
 
     let timings = [ // если typeOfButtons = 'video'
         { time: 30, name: "sdfsdfsdfsfsf 1" }, // если typeOfButtons = 'video'
