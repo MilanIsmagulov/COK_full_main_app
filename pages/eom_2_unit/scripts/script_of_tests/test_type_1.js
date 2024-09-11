@@ -1,4 +1,11 @@
 function waitForData() {
+    if (blockButtonEOM2 === 1){
+        backWardBtn.classList.add('gray_dis');
+        backWardBtn.disabled = true;
+        nextBtn.classList.add('gray_dis');
+        nextBtn.disabled = true;
+    }
+
     if (window.dataLoaded) {
         // Функция для создания теста
         function createTest(index) {
@@ -222,6 +229,7 @@ function waitForData() {
             const inputs = content.querySelectorAll('input');
             let allCorrect = true;
 
+
             inputs.forEach(input => {
                 const userAnswer = input.value.trim();
                 const correctAnswers = input.dataset.correctAnswer ? input.dataset.correctAnswer.split(',').map(ans => ans.trim()) : [];
@@ -234,12 +242,14 @@ function waitForData() {
                     input.classList.remove('correct');
                     allCorrect = false;
                 }
+
             });
 
             localStorage.setItem('answer_from_' + index, JSON.stringify({ questionPlace: allCorrect }));
 
             document.getElementById('control_button_2').style.display = 'none';
             document.getElementById('control_button_3').style.display = 'inline-block';
+
         }
 
         // Функция для сброса теста
@@ -254,6 +264,10 @@ function waitForData() {
             createTest(`index_${currentPageIndex}`);
             answerButton.classList.remove('hidden');
             answerButton.onclick = function(){
+                backWardBtn.classList.remove('gray_dis');
+                backWardBtn.disabled = false;
+                nextBtn.classList.remove('gray_dis');
+                nextBtn.disabled = false;
                 const index = `index_${currentPageIndex}`;
                 if (document.querySelector('.answers_btn')) {
                     checkAnswers();
@@ -274,6 +288,8 @@ function waitForData() {
         setTimeout(waitForData, 50);
     }
 }
+
+
 
 waitForData();
 

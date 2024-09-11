@@ -1,6 +1,11 @@
 document.getElementById('control_button_3').style.display = 'none';
 document.getElementById('control_button_2').style.display = 'inline-block';
-
+if (blockButtonEOM2 === 1){
+    backWardBtn.classList.add('gray_dis');
+    backWardBtn.disabled = true;
+    nextBtn.classList.add('gray_dis');
+    nextBtn.disabled = true;
+}
 var testObj = data[`index_${currentPageIndex}`].test; // 
 var anwserArr3 = testObj.find(item => item.answers).answers; // 
 // anwserArr3 - элементы соотвествуют ячейке. Слево направо, сверху вниз
@@ -199,6 +204,10 @@ function waitForData() {
         }
 
         answerButton.onclick = function() {
+            backWardBtn.classList.remove('gray_dis');
+            backWardBtn.disabled = false;
+            nextBtn.classList.remove('gray_dis');
+            nextBtn.disabled = false;
             checkAnwser5();
             answerButton.classList.add('hidden');
             restartButton.classList.remove('hidden');

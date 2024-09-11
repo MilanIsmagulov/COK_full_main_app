@@ -74,6 +74,38 @@ p {
     display: none;
 }
 
+.content__div_right img{
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.content__div_right img:hover{
+    transform: scale(1.02);
+}
+
+.content__div_right img:active{
+    transform: scale(1.0);
+    animation: shakeAnimation  0.5s ease;
+}
+
+@keyframes shakeAnimation  {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-2deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+    75% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
 #contentWrapper::-webkit-scrollbar {
     width: 10px;
 }
