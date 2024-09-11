@@ -94,9 +94,9 @@ function waitForData() {
         
             switch(typeOfMenu) {
                 case 'tiles':
-                    contentDiv.style.height = (window.innerHeight + headerHeight + 280) + 'px';
+                    contentDiv.style.height = (window.innerHeight + headerHeight - 230) + 'px';
                     let tilesField = document.querySelector('.content__div_center');
-                    newHeight = tilesField.clientHeight + 300;
+                    newHeight = tilesField.clientHeight - 5;
                     tilesField.style.height = newHeight + 'px';
                     break;
         
@@ -117,9 +117,9 @@ function waitForData() {
                         contentDiv.style.height = (window.innerHeight - headerHeight + 120) + 'px';
                         newHeight = lightningField.clientHeight + 250;
                         lightningField.style.height = newHeight + 'px';
-                    } else { // Для больших экранов (настольные компьютеры)
-                        contentDiv.style.height = (window.innerHeight - headerHeight - 60) + 'px';
-                        newHeight = lightningField.clientHeight - 0;
+                    } else if (window.innerWidth > 1175) { // Для больших экранов (настольные компьютеры)
+                        contentDiv.style.height = (window.innerHeight - headerHeight - 125) + 'px';
+                        newHeight = lightningField.clientHeight + 100;
                         lightningField.style.height = newHeight + 'px';
                     }
                     break;              
@@ -287,7 +287,8 @@ function waitForData() {
                 }
             }
 
-
+            changeRowsAndColumns();
+            adjustContentDiv('tiles');
             // Определение индекса центральной строки
             centralRowIndex = Math.floor(numberOfRows / 3);
             if (themesNameArr.length >= 11) {
@@ -430,9 +431,6 @@ function waitForData() {
             }
         }
     });
-
-
-
 
     let resizeTimeout;
 

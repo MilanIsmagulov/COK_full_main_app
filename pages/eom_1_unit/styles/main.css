@@ -1083,7 +1083,7 @@ body, html {
     }
 
     .left_column button, .right_column button {
-        width: 200px;
+        width: 200px !important;
     }
 
     .content__div_left{
