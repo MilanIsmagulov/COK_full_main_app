@@ -39,7 +39,7 @@ var questionPlaceFalseCount = 0;
 // Проходим по всем ключам в localStorage
 for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
-    // console.log("Проверяем ключ:", key); // Отладочная информация
+    // // console.log("Проверяем ключ:", key); // Отладочная информация
 
     // Проверяем, начинается ли ключ с "answer_"
     if (key.startsWith("answer_")) {
@@ -48,11 +48,11 @@ for (var i = 0; i < localStorage.length; i++) {
         try {
             value = JSON.parse(localStorage.getItem(key)); // Парсим значение в объект
         } catch (e) {
-            console.error("Ошибка парсинга JSON для ключа:", key);
+            // console.error("Ошибка парсинга JSON для ключа:", key);
             continue; // Пропустить объект, если он не парсится
         }
 
-        // console.log("Значение:", value); // Отладочная информация
+        // // console.log("Значение:", value); // Отладочная информация
 
         // Если объект содержит свойство questionPlace, анализируем его
         if (value && value.questionPlace !== undefined) {
@@ -64,14 +64,14 @@ for (var i = 0; i < localStorage.length; i++) {
                 questionPlaceFalseCount++; // Увеличиваем счетчик для questionPlace: false
             }
         } else {
-            // console.log("Ключ не содержит questionPlace:", key); // Отладочная информация
+            // // console.log("Ключ не содержит questionPlace:", key); // Отладочная информация
         }
     }
 
 }
 
 if(totalCount !== scoreTests){
-    //console.log("Несовпадение длины localStorage и const data");
+    //// console.log("Несовпадение длины localStorage и const data");
 }
 
 if ((questionPlaceTrueCount + questionPlaceFalseCount) !== scoreTests) {
@@ -79,9 +79,9 @@ if ((questionPlaceTrueCount + questionPlaceFalseCount) !== scoreTests) {
 } 
 
 // Результаты
-// console.log("Общее количество объектов:", totalCount);
-// console.log("Количество объектов с questionPlace: true:", questionPlaceTrueCount);
-// console.log("Количество объектов с questionPlace: false:", questionPlaceFalseCount);
+// // console.log("Общее количество объектов:", totalCount);
+// // console.log("Количество объектов с questionPlace: true:", questionPlaceTrueCount);
+// // console.log("Количество объектов с questionPlace: false:", questionPlaceFalseCount);
 
 var percentOfAnswers =  Math.floor((questionPlaceTrueCount/scoreTests)*100)
 

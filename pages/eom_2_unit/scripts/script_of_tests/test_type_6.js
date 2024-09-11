@@ -81,7 +81,7 @@ function createList() {
     anwserArr2.forEach((item, index) => {
         var listItem = document.createElement('li');  // Создаем элемент списка
         listItem.id = index;  // Задаем ID элементу
-        listItem.classList.add('item');  // Добавляем класс
+        listItem.classList.add('item7');  // Добавляем класс
         listItem.draggable = true;  // Делаем элемент перетаскиваемым
         listItem.textContent = item;  // Устанавливаем текстовое содержимое
 
@@ -121,7 +121,7 @@ function createList() {
             // Запуск наблюдения за добавлением или удалением дочерних элементов
             observer.observe(targetDiv, { childList: true, subtree: true });
         } else {
-            console.error(`Элемент с id "${divId}" не найден.`);
+            // console.error(`Элемент с id "${divId}" не найден.`);
         }
     }
     saveToLocalStorage();  // Сохраняем данные в localStorage
@@ -138,7 +138,7 @@ function loadList() {
     anwserArr2.forEach((item, index) => {
         var listItem = document.createElement('div');
         listItem.id = index;
-        listItem.classList.add('item');
+        listItem.classList.add('item7');
         listItem.draggable = true;
         listItem.textContent = item;
 
@@ -158,7 +158,7 @@ function saveToLocalStorage() {
 }
 
 function addEventListeners() {
-    var items = document.querySelectorAll('.item');
+    var items = document.querySelectorAll('.item7');
     items.forEach(item => {
         item.addEventListener('dragstart', startDrag);
         item.addEventListener('dragend', endDrag);
@@ -211,7 +211,7 @@ function checkAnswer7() {
     // Проходим по каждой колонке
     for (var i = 1; i <= correctAnswers.length; i++) {
         var column = document.getElementById(`col${i}`);
-        var items = column.querySelectorAll('.item');  // Все элементы списка внутри колонки
+        var items = column.querySelectorAll('.item7');  // Все элементы списка внутри колонки
 
         // Проверяем каждый элемент
         items.forEach(item => {
@@ -234,9 +234,9 @@ function checkAnswer7() {
 
     // Выводим результат в консоль
     if (incorrectCount === 0) {
-        console.log('Все ответы верны!');
+        // console.log('Все ответы верны!');
     } else {
-        console.log(`Количество неправильных ответов: ${incorrectCount}`);
+        // console.log(`Количество неправильных ответов: ${incorrectCount}`);
     }
 }
 

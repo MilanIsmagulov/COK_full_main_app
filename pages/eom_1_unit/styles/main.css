@@ -92,12 +92,16 @@ p {
     padding: 1.2em 0;
     overflow-y: auto;
     overflow-x: hidden;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh;
 }
 
 #content {
     padding: 0em 5px 1.2em 1.2em;
     display: grid;
     grid-template-rows: 1fr;
+    flex-grow: 1;
 }
 
 .black_title {
@@ -255,6 +259,7 @@ p {
 }
 
 .content__div {
+    flex-grow: 1;
     grid-template-columns: 1fr 4fr 0.5fr;
 }
 

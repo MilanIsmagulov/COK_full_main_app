@@ -87,43 +87,14 @@ function waitForData() {
 
         const themesNameArr = themesOfEOM1.split('\n');
 
-        function adjustContentDiv(typeOfMenu) {
-            const contentDiv = document.querySelector('.content__div');
-            const headerHeight = document.querySelector('#header').clientHeight;
-            let newHeight;
-        
+        function adjustContentDiv(typeOfMenu) {        
             switch(typeOfMenu) {
                 case 'tiles':
-                    contentDiv.style.height = (window.innerHeight + headerHeight - 230) + 'px';
-                    let tilesField = document.querySelector('.content__div_center');
-                    newHeight = tilesField.clientHeight - 5;
-                    tilesField.style.height = newHeight + 'px';
                     break;
-        
                 case 'hexagon':
-                    contentDiv.style.height = (window.innerHeight + headerHeight + 50) + 'px';
-                    let hexagonField = document.querySelector('.content__div_center');
-                    newHeight = hexagonField.clientHeight + 30;
-                    hexagonField.style.height = newHeight + 'px';
                     break;
-        
                 case 'lightning':       
-                    let lightningField = document.querySelector('.content__div_center');            
-                    if (window.innerWidth <= 750) { // Для маленьких экранов (мобильные устройства)
-                        lightningField.style.setProperty('height', 'initial', 'important');
-                        contentDiv.style.setProperty('height', 'initial', 'important');
-                        
-                    } else if (window.innerWidth > 750 && window.innerWidth <= 1175) { // Для средних экранов (планшеты)
-                        contentDiv.style.height = (window.innerHeight - headerHeight + 120) + 'px';
-                        newHeight = lightningField.clientHeight + 250;
-                        lightningField.style.height = newHeight + 'px';
-                    } else if (window.innerWidth > 1175) { // Для больших экранов (настольные компьютеры)
-                        contentDiv.style.height = (window.innerHeight - headerHeight - 125) + 'px';
-                        newHeight = lightningField.clientHeight + 100;
-                        lightningField.style.height = newHeight + 'px';
-                    }
                     break;              
-                    
                 default:
                     // console.error('Unknown menu type');
             }
@@ -138,7 +109,7 @@ function waitForData() {
                         numberOfColumns = 4;
                         numberOfRows = 3;
                     } else if (themesNameArr.length <= 9) {
-                        numberOfColumns = 4;
+                        numberOfColumns = 3;
                         numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
                     } else if (themesNameArr.length <= 15) {
                         numberOfColumns = 5;
