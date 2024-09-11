@@ -125,7 +125,7 @@ function waitForData() {
                     break;              
                     
                 default:
-                    console.error('Unknown menu type');
+                    // console.error('Unknown menu type');
             }
         }
         
@@ -187,7 +187,7 @@ function waitForData() {
 
             }
             let hexagonField = document.querySelector('.content__div_center');
-            console.log(hexagonField.clientHeigh);
+            // console.log(hexagonField.clientHeigh);
 
         
             // Первичная инициализация сетки
@@ -338,7 +338,7 @@ function waitForData() {
                 }
             });
 
-            console.log(window.innerHeight)
+            // console.log(window.innerHeight)
             adjustContentDiv('tiles');
 
 

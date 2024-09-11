@@ -95,7 +95,7 @@ function waitForData() {
                 titleUpper.innerHTML = title_of_eom;
                 blackHeader.innerHTML = title_of_eom;
             } catch (error) {
-                console.error('There has been a problem with your fetch operation:', error);
+                // console.error('There has been a problem with your fetch operation:', error);
             }
         }
 

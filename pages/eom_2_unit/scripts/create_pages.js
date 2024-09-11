@@ -232,7 +232,7 @@ function waitForData() {
                                 replaceScript('./scripts/script_of_tests/test_type_6.js', 'test-script');
                                 break;
                             default:
-                                console.log('Неизвестный тип теста');
+                                // console.log('Неизвестный тип теста');
                                 break;
                         }
                     }
@@ -446,7 +446,7 @@ function waitForData() {
         displayPage(currentPageIndex);
         createMarkers();
 
-        //console.log("Данные загружены, продолжаем выполнение скрипта.");
+        //// console.log("Данные загружены, продолжаем выполнение скрипта.");
     } else {
         // Если данные ещё не загружены, ждем и проверяем снова
         setTimeout(waitForData, 50);

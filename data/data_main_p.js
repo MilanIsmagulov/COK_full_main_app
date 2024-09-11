@@ -1,5 +1,5 @@
 // Тема ЦОК отображается во многих элементах
-const themeOfDEC = 'Тема ЦОК к примеру она находится в black header и title'
+const themeOfDEC = 'Тема ЦОК к примеру она находится в black header и title dadadasdad'
 // Номер ФГОС и Тескт ФГОС
 const numFgos = '234234234'
 const numFgosTxt = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptatum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptatum.'

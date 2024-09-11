@@ -18,7 +18,7 @@ allThemesButtons.forEach((button, index) => {
 
 function updatePage(index) {
     displayPage(index);
-    console.log(`Button ${index} clicked!`);
+    // console.log(`Button ${index} clicked!`);
 }
 
 // Функция для создания блока с текстом и изображением
