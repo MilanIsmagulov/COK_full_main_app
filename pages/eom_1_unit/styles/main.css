@@ -47,7 +47,11 @@ h3 {
     font-size: clamp(20px,1.3vw,25px);
     margin-bottom: 15px;
     text-align: start;
-    width: 100%;
+    width: 90%;
+}
+
+.in_only_img {
+    width: 100% !important;
 }
 
 header {
@@ -373,7 +377,7 @@ p {
 .rows__tiles {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     width: 100%;
     padding-right: 25px;
 }
@@ -980,6 +984,10 @@ body, html {
     width: 58px;
 }
 
+.lightning {
+    min-height: 600px;
+}
+
 @media (max-width: 1850px){
     .content__div_right{
         display: none;
@@ -1054,8 +1062,13 @@ body, html {
     .small {
         width: 250px !important;
     }
+
+    .small p{
+        font-size: 12px !important;
+    }
+
     .themes_lightning {
-        font-size: 11px !important;
+        font-size: 14px !important;
         text-align: start;
         margin: 5px;
         margin-bottom: 0;
@@ -1079,6 +1092,8 @@ body, html {
         height: 150px !important;
         width: 250px !important;
     }
+
+
     .themes_lightning {
         font-size: 11px !important;
         text-align: start;
@@ -1104,6 +1119,9 @@ body, html {
 
 @media (max-width: 720px){
     .content__div_center{
+        margin-left: 0px;
+    }
+    .hexagon_center {
         margin-left: -70px;
     }
     .lightning{
@@ -1111,6 +1129,10 @@ body, html {
     }
     .small {
         width: 200px !important;
+    }
+        
+    .small p{
+        font-size: 11px !important;
     }
 }
 
@@ -1142,7 +1164,7 @@ body, html {
     }
 }
 
-@media (max-width: 465px){
+@media (max-width: 565px){
     .col_0 {
         padding-bottom: 0;
     }
@@ -1172,3 +1194,22 @@ body, html {
     }
 }
 
+
+@media (max-width: 400px){
+    h3 {
+        width: 85%;
+    }
+    .black_title {
+        flex-direction: column !important;
+    }
+    #backward_button {
+        margin: 0;
+        margin-bottom: 15px;
+    }
+    .content__litera_btn {
+        width: 250px;
+    }
+    .button__tiles_type{
+        height: 150px;
+    }
+}

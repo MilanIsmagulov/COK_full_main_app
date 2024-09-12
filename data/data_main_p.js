@@ -26,6 +26,9 @@ const textOfMethodMaterials = [
 // Ключевые слова
 const keyWords = `Lorem ipsum \n dolor sit, amet consectetur adipisicing elit. Rerum, numquam maiores iure est quas aliquam! Labore beatae et repellat voluptas ullam natus dolorum fuga possimus!
 Lorem ipsum dolor sit amet consectetur \n adipisicing elit. Quod error doloremque recusandae magni, natus magnam modi rem cum animi odit eaque aut fugiat est iusto, maiores dolor illum ipsa. Architecto sunt mollitia beatae veritatis eum. Sed omnis reiciendis maiores vero error perspiciatis similique. Provident nostrum tempora temporibus veniam, asperiores omnis?
+Lorem ipsum \n dolor sit, amet consectetur adipisicing elit. Rerum, numquam maiores iure est quas aliquam! Labore beatae et repellat voluptas ullam natus dolorum fuga possimus!
+Lorem ipsum \n dolor sit, amet consectetur adipisicing elit. Rerum, numquam maiores iure est quas aliquam! Labore beatae et repellat voluptas ullam natus dolorum fuga possimus!
+Lorem ipsum dolor sit amet consectetur \n adipisicing elit. Quod error doloremque recusandae magni, natus magnam modi rem cum animi odit eaque aut fugiat est iusto, maiores dolor illum ipsa. Architecto sunt mollitia beatae veritatis eum. Sed omnis reiciendis maiores vero error perspiciatis similique. Provident nostrum tempora temporibus veniam, asperiores omnis?
 Lorem ipsum \n dolor sit, amet consectetur adipisicing elit. Rerum, numquam maiores iure est quas aliquam! Labore beatae et repellat voluptas ullam natus dolorum fuga possimus!`
 
 /* 1) ФГОС СПО

@@ -4,16 +4,14 @@ let currentTestIndex = null;
 const testContainer = document.getElementById('test-container');
 const contentDiv = document.getElementById('content');
 
-
-
 allThemesButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
+    button.onclick = function() {
         updatePage(index);
         let backgroundColorDiv = document.querySelector('.background_color');
         backgroundColorDiv.classList.add('theme_page_color');
         let mainContentDiv = document.querySelector('#content');
         mainContentDiv.classList.add('theme_page_div');
-    });
+    };
 });
 
 function updatePage(index) {
@@ -82,7 +80,7 @@ function createOnlyImage(paragraph) {
     paragraph.forEach(item => {
         if (item.subtitle2lvl) {
             const subSecLvl = document.createElement('h3');
-            subSecLvl.classList = 'subtitle_second_level';
+            subSecLvl.classList = 'subtitle_second_level in_only_img';
             subSecLvl.innerHTML = item.subtitle2lvl;
             container.appendChild(subSecLvl);
         }

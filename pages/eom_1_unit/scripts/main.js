@@ -86,22 +86,9 @@ function waitForData() {
         contentWindow.appendChild(contentWindowRight);
 
         const themesNameArr = themesOfEOM1.split('\n');
-
-        function adjustContentDiv(typeOfMenu) {        
-            switch(typeOfMenu) {
-                case 'tiles':
-                    break;
-                case 'hexagon':
-                    break;
-                case 'lightning':       
-                    break;              
-                default:
-                    // console.error('Unknown menu type');
-            }
-        }
         
         if (typeOfButtons === 'hexagon') {
-            let numberOfColumns, numberOfRows;
+            var numberOfColumns, numberOfRows;
         
             function changeRowsAndColumns() {
                 if (window.innerWidth > 1175) {
@@ -124,51 +111,63 @@ function waitForData() {
                 } else if (window.innerWidth > 720 && window.innerWidth <= 1175) {
                     numberOfColumns = 3;
                     numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
-                } else if (window.innerWidth <= 720) {
+                } else if (window.innerWidth > 565 && window.innerWidth <= 720) {
                     numberOfColumns = 2;
                     numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
+                } else if (window.innerWidth <= 565) {
+                    numberOfColumns = 1;
+                    numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
                 }
+
+                createHexagons();
             }
         
             function createHexagons() {
-                // Очищаем контейнер перед добавлением новых колонок и кнопок
-                contentWindowCenter.innerHTML = ''; 
-        
+                let elem = document.querySelector('.content__div_center');
+                if (document.getElementById('content__litera_btn_1')) {
+                    elem.innerHTML = '';
+                    elem.classList.add('hexagon_center');
+                }
+                
                 // Создаем сетку гексагонов
                 for (let i = 0; i < numberOfColumns; i++) {
                     let columnsOfHexagon = document.createElement('div');
                     columnsOfHexagon.classList.add('columns__hexagon', 'col_' + i);
-                    contentWindowCenter.appendChild(columnsOfHexagon);
+                    elem.appendChild(columnsOfHexagon);
         
                     for (let j = 0; j < numberOfRows; j++) {
                         let hexagonBtn = document.createElement('button');
                         hexagonBtn.classList.add('button__hexagon_type', 'themes_button');
                         columnsOfHexagon.appendChild(hexagonBtn);
                     }
+
                 }
         
                 let allHexagoneBtn = document.querySelectorAll('.button__hexagon_type');
                 allHexagoneBtn.forEach(function(item, index) {
                     if (index < themesNameArr.length) {
                         item.innerHTML = (index + 1) + '. ' + themesNameArr[index];
+                        item.onclick = function() {
+                            updatePage(index);
+                            let backgroundColorDiv = document.querySelector('.background_color');
+                            backgroundColorDiv.classList.add('theme_page_color');
+                            let mainContentDiv = document.querySelector('#content');
+                            mainContentDiv.classList.add('theme_page_div');
+                        };
                     } else {
                         item.classList.add('hidden_block');
                     }
                 });
 
             }
-            let hexagonField = document.querySelector('.content__div_center');
-            // console.log(hexagonField.clientHeigh);
-
         
             // Первичная инициализация сетки
             changeRowsAndColumns();
-            createHexagons();
-            adjustContentDiv('hexagon');
-            // Добавляем обработчик изменения размеров окна
-            window.addEventListener('resize', () => {
-                changeRowsAndColumns();
-                createHexagons(); // Пересоздаем сетку при изменении размера окна
+
+            document.addEventListener('DOMContentLoaded', () => {
+                window.addEventListener('resize', () => {
+                    changeRowsAndColumns();
+                });
             });
 
         } else if (typeOfButtons === 'lightning') {
@@ -191,9 +190,7 @@ function waitForData() {
                 let button = document.createElement('button');
                 button.classList = 'lightning_button themes_button';
                 // Добавляем обработчик клика для кнопки
-                button.onclick = function() {
-                    // location.href = '#'; // Здесь нужный URL
-                };
+
                 button.innerHTML = `<p class="themes_lightning">${index + 1}. ${theme}</p>`;
 
                 // Распределяем по колонкам
@@ -209,23 +206,18 @@ function waitForData() {
                 rightColumn.appendChild(rightColumn.removeChild(rightColumn.lastChild));
             }
 
-            if (themesNameArr.length <= 10){
-                let lightningButton = document.querySelectorAll('.lightning_button');
-                lightningButton.forEach((item) => {
+            let lightningButton = document.querySelectorAll('.lightning_button');
+            console.log(lightningButton.length)
+            lightningButton.forEach((item) => {
+                if (lightningButton.length <= 10) {
                     item.classList.add('big');
-                });
-            } else if (themesNameArr.length <= 15) {
-                let lightningButton = document.querySelectorAll('.lightning_button');
-                lightningButton.forEach((item) => {
+                } else if (lightningButton.length <= 15) {
                     item.classList.add('medium');
-                });
-            } else if (themesNameArr.length >= 18) {
-                let lightningButton = document.querySelectorAll('.lightning_button');
-                lightningButton.forEach((item) => {
+                } else if (lightningButton.length <= 20) {
                     item.classList.add('small');
-                });
-            } 
-            adjustContentDiv('lightning');
+                }
+            });
+
 
         } else if (typeOfButtons === 'tiles') {
             const themesNameArr = themesOfEOM1.split('\n');
@@ -234,84 +226,93 @@ function waitForData() {
             function changeRowsAndColumns() {
                 if (window.innerWidth > 1175) {
                     if (themesNameArr.length === 12) {
-                        numberOfColumns = 4;
-                        numberOfRows = 3;
+                        numberOfColumns = 3;
+                        numberOfRows = 4;
                     } else if (themesNameArr.length <= 9) {
                         numberOfColumns = 4;
                         numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
                     } else if (themesNameArr.length <= 15) {
-                        numberOfColumns = 5;
-                        numberOfRows = 3;
-                    } else if (themesNameArr.length <= 20) {
-                        numberOfColumns = 5;
+                        numberOfColumns = 4;
                         numberOfRows = 4;
+                    } else if (themesNameArr.length <= 20) {
+                        numberOfColumns = 4;
+                        numberOfRows = 5;
                     } else {
                         numberOfColumns = 4;
                         numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
                     }
-                } else if (window.innerWidth > 720 && window.innerWidth <= 1175) {
+                } else if (window.innerWidth > 800 && window.innerWidth <= 1175) {
                     numberOfColumns = 3;
                     numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
-                } else if (window.innerWidth <= 720) {
+                } else if (window.innerWidth > 550 && window.innerWidth <= 800) {
                     numberOfColumns = 2;
                     numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
+                } else if (window.innerWidth <= 550) {
+                    numberOfColumns = 1;
+                    numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
                 }
+                createTiles();
             }
 
             changeRowsAndColumns();
-            adjustContentDiv('tiles');
-            // Определение индекса центральной строки
-            centralRowIndex = Math.floor(numberOfRows / 3);
-            if (themesNameArr.length >= 11) {
-                centralRowIndex = Math.floor(numberOfRows / 1);
-            }
-            let contentWindowCenter = document.querySelector('.content__div_center');
-            contentWindowCenter.classList.add('tiles');
 
-            // Создание строк и кнопок
-            for (let i = 0; i < numberOfRows; i++) {
-                let rowOfTiles = document.createElement('div');
-                rowOfTiles.classList.add('rows__tiles');
-                contentWindowCenter.appendChild(rowOfTiles);
-
-                let buttonsInRow = numberOfColumns;
-                
-                // Увеличиваем количество кнопок в центральной строке
-                if (i === centralRowIndex) {
-                    buttonsInRow = numberOfColumns + 2; // Добавляем 2 кнопки больше, чем в других строках
-                } 
-                
-                for (let j = 0; j < buttonsInRow; j++) {
-                    let tileBtn = document.createElement('button');
-                    tileBtn.classList.add('button__tiles_type');
-                    if (themesNameArr.length >= 15) {
-                        tileBtn.classList.add('small_tile');
-                        rowOfTiles.classList.add('small_tile_center');
-                    }
-                    if (themesNameArr.length === 12){
-                        contentWindow.classList.add('big_left_side');
-                    }
-                    tileBtn.classList.add('themes_button');
-                    rowOfTiles.appendChild(tileBtn);
-                }
-            }
             // Обновление кнопок с темами
-            let allTilesBtn = document.querySelectorAll('.button__tiles_type');
-            
-
-
-            allTilesBtn.forEach(function(item, index) {
-                if (index < themesNameArr.length) {
-                    item.innerHTML = (index + 1) + '. ' + themesNameArr[index];
-                    // item.setAttribute('onclick', `location.href='#'`);
-                } else {
-                    item.classList.add('hidden_block');
+            function createTiles() {
+                let elem = document.querySelector('.content__div_center');
+                if (document.getElementById('content__litera_btn_1')) {
+                    elem.innerHTML = '';
+                    elem.classList.add('tiles');
                 }
+
+                let centralRowIndex = Math.ceil(numberOfRows / 1); // Переместите сюда
+                if (themesNameArr.length >= 11) {
+                    centralRowIndex = Math.floor(numberOfRows / 1);
+                }
+
+                let fragment = document.createDocumentFragment();
+            
+                for (let i = 0; i < numberOfRows; i++) {
+                    let rowOfTiles = document.createElement('div');
+                    rowOfTiles.classList.add('rows__tiles');
+                    fragment.appendChild(rowOfTiles);
+            
+                    let buttonsInRow = (i === centralRowIndex) ? numberOfColumns + 2 : numberOfColumns;
+            
+                    for (let j = 0; j < buttonsInRow; j++) {
+                        let tileBtn = document.createElement('button');
+                        tileBtn.classList.add('button__tiles_type');
+                        if (themesNameArr.length >= 15) {
+                            tileBtn.classList.add('small_tile');
+                            rowOfTiles.classList.add('small_tile_center');
+                        }
+                        tileBtn.classList.add('themes_button');
+                        rowOfTiles.appendChild(tileBtn);
+                    }
+                }
+
+                elem.appendChild(fragment);
+                var allTilesBtn = document.querySelectorAll('.button__tiles_type');
+                allTilesBtn.forEach(function(item, index) {
+                    if (index < themesNameArr.length) {
+                        item.innerHTML = (index + 1) + '. ' + themesNameArr[index];
+                        item.onclick = function() {
+                            updatePage(index);
+                            let backgroundColorDiv = document.querySelector('.background_color');
+                            backgroundColorDiv.classList.add('theme_page_color');
+                            let mainContentDiv = document.querySelector('#content');
+                            mainContentDiv.classList.add('theme_page_div');
+                        };
+                    } else {
+                        item.classList.add('hidden_block');
+                    }
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                window.addEventListener('resize', () => {
+                    changeRowsAndColumns();
+                });
             });
-
-            // console.log(window.innerHeight)
-            adjustContentDiv('tiles');
-
 
         } else if (typeOfButtons === 'video') {
             let contentDiv = document.querySelector('#content');
@@ -390,33 +391,29 @@ function waitForData() {
         // Если данные ещё не загружены, ждем и проверяем снова
         setTimeout(waitForData, location.reload(),  50);
     }
+    function changeLightHeight(){
+        if (window.innerWidth == 1650){
+            const lightningElement = document.querySelector('.lightning');
+            lightningElement.style.height = `${lightningElement.clientHeight * 1.2}px`;
+        }
+    }
+    changeLightHeight();
+    // Флаг, чтобы отслеживать, срабатывал ли обработчик
+    window.addEventListener('resize', function(){
+        if (window.innerWidth <= 565){
+            var lightningHeight = document.querySelector('.lightning');
+            lightningHeight.style.setProperty('height', 'initial', 'important'); // Устанавливаем важное свойство стиля
+        }
+        changeLightHeight();
+    });
 
-
-    
     window.addEventListener('resize', function(){
         if (typeOfButtons === 'video') { // Проверьте правильность переменной
             if (window.innerWidth <= 1100){
                 let videoContentDiv = document.querySelector('.video_div');
                 videoContentDiv.style.setProperty('height', 'initial', 'important'); // Устанавливаем важное свойство стиля
-                
             }
         }
-    });
-
-    let resizeTimeout;
-
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            const width = window.innerWidth;
-            if (width >= 1090 && width <= 1110) {
-                window.location.reload();
-            } else if (width >= 1190 && width <= 1210) {
-                window.location.reload();
-            } else if (width >= 719 && width <= 750) {
-                window.location.reload();
-            }
-        }, 2); // Adjust debounce time as needed
     });
 
     }
@@ -424,11 +421,11 @@ function waitForData() {
 
 let toMenuBtn = document.querySelector('#backward_button');
 toMenuBtn.onclick = () => {
-    if (document.getElementById('content__litera_btn_1')) {
-        // Элемент с id 'content__litera_btn_1' существует
+    if (document.getElementById('content__litera_btn_1') || document.querySelector('#video_content_0')) {
+        // Элемент с id 'content__litera_btn_1' или 'video_content_0' существует
         location.href='../../index.html';
     } else {
-        // Элемент с id 'content__litera_btn_1' не существует
+        // Элемент с id 'content__litera_btn_1' или 'video_content_0' не существует
         window.location.reload();
     }
     //
