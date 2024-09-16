@@ -838,6 +838,11 @@ body, html {
     height: 40px;
 }
 
+.video_title_text{
+    font-size: clamp(20px, 1.6vw, 35px);
+    font-weight: 700;
+}
+
 .pink_subtitle {
     font-size: clamp(25px, 1.6vw, 35px);
     font-weight: 700;
@@ -988,6 +993,16 @@ body, html {
     min-height: 600px;
 }
 
+.video_div {
+    display: flex;
+    flex-direction: column;
+}
+
+.video_title {
+    margin-top: 25px;
+    order: -2;
+}
+
 @media (max-width: 1850px){
     .content__div_right{
         display: none;
@@ -1099,18 +1114,18 @@ body, html {
         text-align: start;
         margin: 5px;
         margin-bottom: 0;
-        -webkit-transform: skewX(0deg);
-        -moz-transform: skewX(0deg);
-        -ms-transform: skewX(0deg);
-        -o-transform: skewX(0deg);
-        transform: skewX(0deg);
+        -webkit-transform: skewX(3deg);
+        -moz-transform: skewX(3deg);
+        -ms-transform: skewX(3deg);
+        -o-transform: skewX(3deg);
+        transform: skewX(3deg);
     }
     .lightning {
-        -webkit-transform: skewX(-0deg);
-        -moz-transform: skewX(-0deg);
-        -ms-transform: skewX(-0deg);
-        -o-transform: skewX(-0deg);
-        transform: skewX(-0deg);
+        -webkit-transform: skewX(-3deg);
+        -moz-transform: skewX(-3deg);
+        -ms-transform: skewX(-3deg);
+        -o-transform: skewX(-3deg);
+        transform: skewX(-3deg);
     }
     .lightning{
         margin: 0;
@@ -1160,11 +1175,35 @@ body, html {
         flex-direction: row !important;
     }
     .small {
+
         width: 300px !important;
     }
 }
 
 @media (max-width: 565px){
+    .small {
+        max-height: 55px !important;
+    }
+    .themes_lightning {
+        font-size: 11px !important;
+        text-align: start;
+        margin: 5px;
+        margin-bottom: 0;
+        -webkit-transform: skewX(0deg);
+        -moz-transform: skewX(0deg);
+        -ms-transform: skewX(0deg);
+        -o-transform: skewX(0deg);
+        transform: skewX(0deg);
+    }
+
+    .lightning {
+        -webkit-transform: skewX(-0deg);
+        -moz-transform: skewX(-0deg);
+        -ms-transform: skewX(-0deg);
+        -o-transform: skewX(-0deg);
+        transform: skewX(-0deg);
+    }
+
     .col_0 {
         padding-bottom: 0;
     }
@@ -1196,6 +1235,8 @@ body, html {
 
 
 @media (max-width: 400px){
+
+
     h3 {
         width: 85%;
     }

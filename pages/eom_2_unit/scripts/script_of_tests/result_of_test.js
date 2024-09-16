@@ -12,7 +12,6 @@ document.getElementById('control_button_3').onclick = function() {
 
 function createResultContainers(containerIds, content) {
     const contentWrapper = document.querySelector('#contentWrapper');
-
     containerIds.forEach((id, index) => {
         const container = document.createElement('div');
         container.className = 'result_container';

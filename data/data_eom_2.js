@@ -31,8 +31,8 @@ const data = {
             {"type": 1},
            
             {"answers": [
-                "First Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolores consequatur temporibus pariatur voluptatem eius ea asperiores, fugit est ducimus dolor possimus officiis reiciendis nesciunt perferendis facilis? Answer",
-                "Second Answer",
+                "First ",
+                "<img class='answer_image' src='./content/test_image.png' alt='sfsf'>",
                 "Third Answer",
                 "Four Answer"
             ]},
@@ -94,7 +94,7 @@ const data = {
                 "First dfgdgdgdgdg Answer",
                 "Second ываыаыываываыаыа Answer",
                 "Third Answer",
-                "Third Answer",
+                "<img class='answer_image' src='./content/test_image.png' alt='sfsf'>",
                 "Harum ex inventore laborum officiis ipsa. Soluta voluptate consequuntur a ex est qui. Earum dignissimos exercitationem aperiam dolore veniam deserunt beatae, blanditiis vero ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? Error illo earum laudantium facilis."
             ]},
             {"correct_answer": [0, 1]},
@@ -272,6 +272,32 @@ const data = {
         ],
     },
     "index_19":{
+        "subtitle": "subtitle 3333",
+        "step_of_popup": "step 2",
+        "test":[
+            {"type": 8},
+            {"description": "Тут пишем описание задания"},
+            {"test_with_text_3": "Россия {=1} наша {=2} Россия - любимая наша страна Могучая {=3} великая {=4} Твое {=5} на все {=6}"},
+            {"options_test_with_text_3": {
+                "1": ["священная", "земля", "родина"],
+                "2": ["держава", "страна", "родина"],
+                "3": ["воля", "доброта", "сила"],
+                "4": ["слава", "доброта", "сила"],
+                "5": ["достоянье", "награда", "трофей"],
+                "6": ["времена", "годы", "столетия"]
+            }},
+            {"correctAnswers_test_with_text_3": {
+                "1": "священная",
+                "2": "держава",
+                "3": "воля",
+                "4": "слава",
+                "5": "достоянье",
+                "6": "времена"
+            }},
+            {"image": true, "image_path": "./content/video/test_video.mp4"}
+        ],
+    },
+    "index_20":{
         "subtitle": "Тут типа результаты",
         "step_of_popup": "Тут типа результаты",
         "result":[]

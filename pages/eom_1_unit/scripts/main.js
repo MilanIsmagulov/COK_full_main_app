@@ -315,10 +315,13 @@ function waitForData() {
             });
 
         } else if (typeOfButtons === 'video') {
+            let videoTitle = document.createElement('div');
+            videoTitle.classList = `video_title`
+            videoTitle.innerHTML = `<h3 class="video_title_text">${videoTitle2}</h3>`;
+            document.querySelector('#contentWrapper').appendChild(videoTitle);
             let contentDiv = document.querySelector('#content');
             
             contentDiv.innerHTML = '';
-            contentDiv.innerHTML = `<div class="video_title">${videoTitle}</div>`;
             contentDiv.classList.add('video_div');
             let videoDiv = document.createElement('div');
             videoDiv.classList = 'video_content';

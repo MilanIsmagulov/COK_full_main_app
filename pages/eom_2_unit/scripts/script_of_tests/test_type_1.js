@@ -45,7 +45,7 @@ function waitForData() {
                     descriptionDiv.className = 'description_w_input';
                     const label = document.createElement('label');
                     label.htmlFor = 'test_type_2';
-                    label.textContent = 'Введите ответ:';
+                    label.innerHTML = 'Введите ответ:';
                     descriptionDiv.appendChild(label);
 
                     const input = document.createElement('input');
@@ -61,7 +61,7 @@ function waitForData() {
                     const matches = [...testWithText2.test_with_text_2.matchAll(/\{=(.*?)\}/g)];
                     parts.forEach((part, index) => {
                         const span = document.createElement('span');
-                        span.textContent = part;
+                        span.innerHTML = part;
                         descriptionDiv.appendChild(span);
                         if (matches[index]) {
                             const input = document.createElement('input');
@@ -116,7 +116,7 @@ function waitForData() {
                     input.value = i;
 
                     const p = document.createElement('p');
-                    p.textContent = answer;
+                    p.innerHTML = answer;
 
                     answerDiv.appendChild(input);
                     answerDiv.appendChild(p);

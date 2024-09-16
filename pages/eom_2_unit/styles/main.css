@@ -972,6 +972,37 @@ ul li div{
     color: rgb(82, 82, 82) !important;
 }
 
+.answer_image {
+    width: 400px;
+}
+
+.test_wrapper{
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.description_w_input {
+    order: 1;
+    margin-bottom: 15px;
+}
+
+.test_with_text_3 {
+    max-width: 100%;
+    order: 2;
+    font-size: clamp(18px, 1.5vw, 22px);
+    margin-left: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.test_with_text_3 select{
+    font-size: clamp(18px, 1.5vw, 22px);
+    margin: 5px;
+    border-radius: 10px;
+}
+
 .item7{
     list-style-image: none;
     text-align: center;
@@ -1008,6 +1039,11 @@ ul li div{
 }
 
 @media (max-width: 1200px) {
+    .test_wrapper{
+        min-width: 100% !important;
+        margin-bottom: 25px;
+    }
+
     .only_img video {
         width: 60%;
     }
