@@ -46,3 +46,4 @@ const infoContent =
 ${themeOfDEC}`
 
 const blockButtonEOM2 = 0; // "Это для разработки и отладки удобно, блокирует кнопки назад и далее в ЭОМ_2 1 true 0 false"
+const typeOfEOM3 = 0; // Если 1 то это тест если что то иное то мини-игра
