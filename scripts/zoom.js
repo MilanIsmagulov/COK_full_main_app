@@ -61,69 +61,76 @@ var zoom = (function(){
 	 * @param {Object} rect
 	 * @param {Number} scale
 	 */
-	function magnify( rect, scale ) {
-
+	function magnify(rect, scale) {
 		var scrollOffset = getScrollOffset();
-
+	
 		// Ensure a width/height is set
 		rect.width = rect.width || 1;
 		rect.height = rect.height || 1;
-
+	
 		// Center the rect within the zoomed viewport
-		rect.x -= ( window.innerWidth - ( rect.width * scale ) ) / 2;
-		rect.y -= ( window.innerHeight - ( rect.height * scale ) ) / 2;
-
-		if( supportsTransforms ) {
-			// Reset
-			if( scale === 1 ) {
-				document.body.style.transform = '';
-				document.body.style.OTransform = '';
-				document.body.style.msTransform = '';
-				document.body.style.MozTransform = '';
-				document.body.style.WebkitTransform = '';
-			}
-			// Scale
-			else {
-				var origin = scrollOffset.x +'px '+ scrollOffset.y +'px',
-					transform = 'translate('+ -rect.x +'px,'+ -rect.y +'px) scale('+ scale +')';
-
-				document.body.style.transformOrigin = origin;
-				document.body.style.OTransformOrigin = origin;
-				document.body.style.msTransformOrigin = origin;
-				document.body.style.MozTransformOrigin = origin;
-				document.body.style.WebkitTransformOrigin = origin;
-
-				document.body.style.transform = transform;
-				document.body.style.OTransform = transform;
-				document.body.style.msTransform = transform;
-				document.body.style.MozTransform = transform;
-				document.body.style.WebkitTransform = transform;
-			}
+		rect.x -= (window.innerWidth - (rect.width * scale)) / 2;
+		rect.y -= (window.innerHeight - (rect.height * scale)) / 2;
+	
+		// Check if the image is in viewport and scroll if necessary
+		var elementBottom = rect.y + rect.height * scale;
+		var elementRight = rect.x + rect.width * scale;
+	
+		// Get the current viewport dimensions
+		var viewportTop = scrollOffset.y;
+		var viewportBottom = viewportTop + window.innerHeight;
+		var viewportLeft = scrollOffset.x;
+		var viewportRight = viewportLeft + window.innerWidth;
+	
+		// Scroll if the element is not fully visible
+		if (rect.y < viewportTop) {
+			// Scroll up to bring the element into view
+			window.scrollTo(scrollOffset.x, rect.y);
+		} else if (elementBottom > viewportBottom) {
+			// Scroll down to bring the element into view
+			window.scrollTo(scrollOffset.x, elementBottom - window.innerHeight);
 		}
-		else {
+		if (rect.x < viewportLeft) {
+			// Scroll left to bring the element into view
+			window.scrollTo(rect.x, scrollOffset.y);
+		} else if (elementRight > viewportRight) {
+			// Scroll right to bring the element into view
+			window.scrollTo(elementRight - window.innerWidth, scrollOffset.y);
+		}
+	
+		if (supportsTransforms) {
 			// Reset
-			if( scale === 1 ) {
+			if (scale === 1) {
+				document.body.style.transform = '';
+			} else {
+				var origin = scrollOffset.x + 'px ' + scrollOffset.y + 'px',
+					transform = 'translate(' + -rect.x + 'px,' + -rect.y + 'px) scale(' + scale + ')';
+	
+				document.body.style.transformOrigin = origin;
+				document.body.style.transform = transform;
+			}
+		} else {
+			// Reset
+			if (scale === 1) {
 				document.body.style.position = '';
 				document.body.style.left = '';
 				document.body.style.top = '';
 				document.body.style.width = '';
 				document.body.style.height = '';
 				document.body.style.zoom = '';
-			}
-			// Scale
-			else {
+			} else {
 				document.body.style.position = 'relative';
-				document.body.style.left = ( - ( scrollOffset.x + rect.x ) / scale ) + 'px';
-				document.body.style.top = ( - ( scrollOffset.y + rect.y ) / scale ) + 'px';
-				document.body.style.width = ( scale * 100 ) + '%';
-				document.body.style.height = ( scale * 100 ) + '%';
+				document.body.style.left = (- (scrollOffset.x + rect.x) / scale) + 'px';
+				document.body.style.top = (- (scrollOffset.y + rect.y) / scale) + 'px';
+				document.body.style.width = (scale * 100) + '%';
+				document.body.style.height = (scale * 100) + '%';
 				document.body.style.zoom = scale;
 			}
 		}
-
+	
 		level = scale;
 	}
-
+	
 	/**
 	 * Pan the document when the mouse cursor approaches the edges
 	 * of the window.

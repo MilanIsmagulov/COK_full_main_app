@@ -34,7 +34,7 @@ const data = {
                 "First ",
                 "<img class='answer_image' src='./content/test_image.png' alt='sfsf'>",
                 "Third Answer",
-                "Four Answer"
+                "$$\\def\\d{\\mathrm{d}}\\oint_C \\vec{B}\\circ \\d\\vec{l} = \\mu_0 \\left( I_{\\text{enc}} + \\varepsilon_0 \\frac{\\d}{\\d t} \\int_S {\\vec{E} \\circ \\hat{n}}\\; \\d a \\right)$$"
             ]},
             {"correct_answer": [1]},
             {"image": true, "image_path": "./content/video/test_video.mp4"}
@@ -147,6 +147,7 @@ const data = {
     "index_10":{
         "subtitle": "subtitle 9",
         "step_of_popup": "step 9",
+        "description": "Тут пишем описание задания",
         "paragraph_1":[
             {"image": true, "image_path": "./content/test_image.png"},
             {"text":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolores consequatur temporibus pariatur voluptatem eius ea asperiores, fugit est ducimus dolor possimus officiis reiciendis nesciunt perferendis facilis? Beatae ea culpa a modi! Harum ex inventore laborum officiis ipsa. <b><i> Soluta voluptate consequuntur a ex est qui. Earum dignissimos exercitationem aperiam dolore veniam deserunt beatae, blanditiis vero ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? Error illo earum laudantium facili blanditiis vero ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? Error illo earum laudantium facilis.Lorem ipsum dolor sit amet consectetur</i></b> adipisicing elit. Recusandae dolores consequatur temporibus pariatur voluptatem eius ea asperiores, fugit est ducimus dolor possimus officiis reiciendis nesciunt perferendis facilis? Beatae ea culpa a modi! Harum ex inventore laborum officiis ipsa. Soluta voluptate consequuntur a ex est qui. Earum dignissimos exercitationem aperiam dolore veniam deserunt beatae, blanditiis vero ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? Error illo earum laudantium facilis.Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dolores consequatur temporibus pariatur voluptatem eius ea asperiores, fugit est ducimus dolor possimus officiis reiciendis nesciunt perferendis facilis? Beatae ea culpa a modi! Harum ex inventore laborum officiis ipsa. Soluta voluptate consequuntur a ex est qui. Earum dignissimos exercitationem aperiam dolore veniam deserunt beatae, blanditiis vero ea natus illum ipsum aliquid asperiores ab vel architecto iure aliquam error iusto? Error illo earum laudantium facilis."},
@@ -175,7 +176,7 @@ const data = {
         "test":[
             {"type": 2},
             {"description": "Тут пишем описание задания"},
-            {"test_with_text_2": "Россия {=священная} наша {=держава}. Россия {=священная} наша {=держава}. Россия {=священная} наша {=держава}.Россия {=священная} наша {=держава}.Россия {=священная} наша {=держава}"},
+            {"test_with_text_2": "Россия {=священная} наша {=держава}. Россия - любимая наша страна. Могучая {=воля} великая {=слава}. Твое {=достоянье} на все {=времена}."},
             {"image": true, "image_path": "./content/video/test_video.mp4"}
         ],
     },

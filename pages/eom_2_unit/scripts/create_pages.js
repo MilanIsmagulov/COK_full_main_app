@@ -15,20 +15,12 @@ const answerBtn = document.getElementById('control_button_2');
 
 function waitForData() {
     if (window.dataLoaded) {
-
-        function addFirstBtn(){
-            const answerBtn = document.getElementById('control_button_2');
-            const backWardBtn = document.getElementById('control_button_1');
-            backWardBtn.classList.remove('hidden');
-            answerBtn.classList.remove('hidden');
-        }
-
         backWardBtn.classList.add('gray_dis');
         backWardBtn.disabled = true;
 
         function clearLocalStorage(){
             if (currentPageIndex == 1){
-                localStorage.clear();
+                //localStorage.clear();
             }  
         }
 
@@ -321,6 +313,7 @@ function waitForData() {
                     lastTouchTime = currentTime;
                 });
             });
+            
         }
 
         // Функция для создания маркеров страниц
@@ -379,9 +372,7 @@ function waitForData() {
             clearContent();
         };
 
-        function resetPage(){
-            updatePage(0);
-        };
+
 
         // Обновленная функция для обновления страницы
         function updatePage(step) {
@@ -401,6 +392,7 @@ function waitForData() {
                 displayPage(currentPageIndex);
                 // Обновление маркеров
                 createMarkers();
+                
             };
 
             const closeBtn2 = document.querySelector('#close_popup_btn');
