@@ -202,7 +202,6 @@ function waitForData() {
                     if (testItem.hasOwnProperty('type')) {
                         switch (testItem.type) {
                             case 1:
-                                
                                 replaceScript('./scripts/script_of_tests/test_type_1.js', 'test-script');
                                 break;
                             case 2:
