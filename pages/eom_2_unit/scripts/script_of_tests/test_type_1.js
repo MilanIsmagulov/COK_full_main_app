@@ -126,7 +126,16 @@ function waitForData() {
                 function updateButtonState() {
                     var inputs = form.querySelectorAll('input');
                     var anyChecked = Array.from(inputs).some(input => input.checked);
-                    // Получаем все div элементы с классом 'answer_div' и добавляем обработчик событий
+                    if (anyChecked) {
+                        answerButton.classList.remove('gray_dis');
+                        answerButton.disabled = false;
+                    } else {
+                        answerButton.classList.add('gray_dis');
+                        answerButton.disabled = true;
+                    }
+                }
+                // Функция для установки обработчиков кликов на div элементы
+                function initializeDivClickHandlers() {
                     document.querySelectorAll('.answer_div').forEach(div => {
                         div.addEventListener('click', function() {
                             var input = this.querySelector('input[type="radio"], input[type="checkbox"]');
@@ -137,16 +146,11 @@ function waitForData() {
                             }
                         });
                     });
-                    if (anyChecked) {
-                        answerButton.classList.remove('gray_dis');
-                        answerButton.disabled = false;
-                    } else {
-                        answerButton.classList.add('gray_dis');
-                        answerButton.disabled = true;
-                    }
                 }
                 // Инициализация состояния кнопки при загрузке страницы
                 updateButtonState();
+                // Инициализация обработчиков кликов на div элементы при загрузке страницы
+                initializeDivClickHandlers();
                 // Добавление слушателей событий для input элементов
                 form.querySelectorAll('input').forEach((input) => {
                     input.addEventListener('change', updateButtonState);
@@ -184,6 +188,11 @@ function waitForData() {
             inputs.forEach((input) => {
                 input.disabled = true;
             });
+            // Блокируем div и добавляем класс для визуальной индикации
+            document.querySelectorAll('.answer_div').forEach(div => {
+                div.classList.add('disabled_div');
+                div.style.pointerEvents = 'none'; // Отключаем взаимодействие с div
+            });
         }
         // ЭТО ДЛЯ ОШИБОК
         var element = document.querySelector('.number_of_step');
@@ -192,8 +201,8 @@ function waitForData() {
             var attempts = localStorage.getItem(`attempts_${number}`);
             if (!attempts) {
                 localStorage.setItem(`attempts_${number}`, '2'); // Устанавливаем 2 попытки
-            }
-        }
+            };
+        };
         // ЭТО ДЛЯ ОШИБОК
         initializeAttempts();
         function findPreviousParagraph1(currentIndex) {
@@ -204,10 +213,10 @@ function waitForData() {
                 var key = keys[i];
                 if (data[key].paragraph_1) {
                     return key; // Возвращаем индекс с найденным paragraph_1
-                }
-            }
+                };
+            };
             return null; // Если не найдено
-        }
+        };
         // ЭТО ДЛЯ ОШИБОК
         // Пример использования
         var currentIndex = `index_${number}`; // Текущий индекс
@@ -227,13 +236,13 @@ function waitForData() {
             backWardBtn.disabled = false;
             nextBtn.classList.remove('gray_dis');
             nextBtn.disabled = false;
-        }
+        };
         // ЭТО ДЛЯ ОШИБОК
         function disabvarest() {
             document.getElementById('control_button_2').style.display = 'none';
             document.getElementById('control_button_3').style.display = 'none';
             setTimeout(() => toTheoryPage(), 1000);
-        }
+        };
         // ЭТО ДЛЯ ОШИБОК
         // Функция для проверки теста с вариантами ответов
         function checkAnswers() {
@@ -296,7 +305,7 @@ function waitForData() {
                 answerButton.classList.add('hidden');
                 restartButton.classList.remove('hidden');
             }
-        }
+        };
         // Функция для проверки текстовых тестов
         function checkTextAnswers(index) {
             var attempts = parseInt(localStorage.getItem(`attempts_${number}`));
@@ -327,19 +336,19 @@ function waitForData() {
                 if (attempts === 0) {
                     disabvarest();
                 }
-            }
+            };
             localStorage.setItem('answer_from_' + index, JSON.stringify({ questionPlace: allCorrect }));
             if (attempts != 0){
                 document.getElementById('control_button_2').style.display = 'none';
                 document.getElementById('control_button_3').style.display = 'inline-block';
-            }
-        }
+            };
+        };
         // Функция для сброса теста
         function resetTest() {
             var dynamicContainer = document.getElementById('dynamic-content');
             if (dynamicContainer) {
                 dynamicContainer.innerHTML = '';
-            }
+            };
             answerButton.classList.add('gray_dis');
             answerButton.disabled = true;
             restartButton.classList.remove('hidden');
@@ -351,10 +360,10 @@ function waitForData() {
                     checkAnswers();
                 } else {
                     checkTextAnswers(index);
-                }
+                };
             };
             restartButton.addEventListener('click', resetTest);
-        }
+        };
         // Инициализация первого теста при загрузке страницы
         resetTest();
         // Логика, которая зависит от данных
@@ -362,6 +371,6 @@ function waitForData() {
     } else {
         // Если данные ещё не загружены, ждем и проверяем снова
         setTimeout(waitForData, 50);
-    }
-}
+    };
+};
 waitForData();

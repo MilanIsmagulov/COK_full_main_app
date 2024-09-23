@@ -176,6 +176,10 @@ p{
     float: left;
 }
 
+.disabled_div {
+    opacity: 1.0; /* Изменение прозрачности */
+    cursor: not-allowed; /* Изменение курсора */
+}
 
 .img_with_sgn p{
     text-align: center;
