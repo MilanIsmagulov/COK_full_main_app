@@ -142,7 +142,7 @@ function checkParagraph(){
                 setTimeout(() => toTheoryPage(), 1000);
             }
             function checkAnwser4(){
-                varisCorrect = true;
+                var isCorrect = true;
                 var attempts = parseInt(localStorage.getItem(`attempts_${number}`));
                 fullList2.forEach((item, index) =>{
                     if (item.children[1].querySelector('.item4')?.innerText.trim() === undefined){
