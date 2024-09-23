@@ -20,7 +20,6 @@ function waitForData() {
                 document.getElementById('control_button_1').disabled = false;
                 document.getElementById('control_button_4').classList.remove('gray_dis');
                 document.getElementById('control_button_4').disabled = false;
-                //console.log('Found paragraph_1, stopping execution.');
                 return; // Прерываем выполнение функции
             }
             var test = testData.test;
@@ -127,6 +126,17 @@ function waitForData() {
                 function updateButtonState() {
                     var inputs = form.querySelectorAll('input');
                     var anyChecked = Array.from(inputs).some(input => input.checked);
+                    // Получаем все div элементы с классом 'answer_div' и добавляем обработчик событий
+                    document.querySelectorAll('.answer_div').forEach(div => {
+                        div.addEventListener('click', function() {
+                            var input = this.querySelector('input[type="radio"], input[type="checkbox"]');
+                            if (input) {
+                                input.checked = true;
+                                // Обновляем состояние кнопки после выбора
+                                updateButtonState();
+                            }
+                        });
+                    });
                     if (anyChecked) {
                         answerButton.classList.remove('gray_dis');
                         answerButton.disabled = false;
@@ -150,9 +160,9 @@ function waitForData() {
                     if (event.target.value.length > 0) {
                         answerButton.classList.remove('gray_dis');
                         answerButton.disabled = false;
-                    }
+                    };
                 });
-            }
+            };
             if (testWithText2) {
                 var gapElements = document.querySelectorAll('.gap');
                 gapElements.forEach((element) => {
@@ -163,10 +173,10 @@ function waitForData() {
                         } else {
                             answerButton.classList.add('gray_dis');
                             answerButton.disabled = true;
-                        }
+                        };
                     });
                 });
-            }
+            };
         }
         // Функция для блокировки всех элементов ввода
         function blockInputs() {
@@ -175,6 +185,7 @@ function waitForData() {
                 input.disabled = true;
             });
         }
+        // ЭТО ДЛЯ ОШИБОК
         var element = document.querySelector('.number_of_step');
         var number = parseInt(element.textContent, 10);
         function initializeAttempts() {
@@ -183,6 +194,7 @@ function waitForData() {
                 localStorage.setItem(`attempts_${number}`, '2'); // Устанавливаем 2 попытки
             }
         }
+        // ЭТО ДЛЯ ОШИБОК
         initializeAttempts();
         function findPreviousParagraph1(currentIndex) {
             var keys = Object.keys(data);
@@ -196,6 +208,7 @@ function waitForData() {
             }
             return null; // Если не найдено
         }
+        // ЭТО ДЛЯ ОШИБОК
         // Пример использования
         var currentIndex = `index_${number}`; // Текущий индекс
         var previousIndex = findPreviousParagraph1(currentIndex);
@@ -215,11 +228,13 @@ function waitForData() {
             nextBtn.classList.remove('gray_dis');
             nextBtn.disabled = false;
         }
+        // ЭТО ДЛЯ ОШИБОК
         function disabvarest() {
             document.getElementById('control_button_2').style.display = 'none';
             document.getElementById('control_button_3').style.display = 'none';
             setTimeout(() => toTheoryPage(), 1000);
         }
+        // ЭТО ДЛЯ ОШИБОК
         // Функция для проверки теста с вариантами ответов
         function checkAnswers() {
             var form = document.querySelector('.answer_form');
@@ -250,6 +265,7 @@ function waitForData() {
                 });
                 if (!allCorrect) {
                     blockInputs();
+                    // ЭТО ДЛЯ ОШИБОК
                     if (partiallyCorrect) {
                         attempts--; // Уменьшаем количество попыток при частично правильном ответе
                         localStorage.setItem(`attempts_${number}`, attempts.toString());

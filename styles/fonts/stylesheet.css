@@ -214,3 +214,10 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Times New Roman";
+    src: url("32441506567156636049eb850b53f02a.eot"),
+    url("32441506567156636049eb850b53f02a.woff2")format("woff2"),
+    url("32441506567156636049eb850b53f02a.woff")format("woff"),
+    url("32441506567156636049eb850b53f02a.ttf")format("truetype"),
+}

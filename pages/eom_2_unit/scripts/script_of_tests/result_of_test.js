@@ -2,23 +2,23 @@ document.getElementById('control_button_2').style.display = 'none';
 document.getElementById('control_button_3').style.display = 'inline-block';
 document.getElementById('control_button_1').classList.add('gray_dis');
 document.getElementById('control_button_1').disabled = true;
-document.getElementById('control_button_3').onclick = function() {
+document.getElementById('control_button_3').onclick = function(){
     window.location.reload();
     localStorage.clear();
 }
-function createResultContainers(containerIds, content) {
-    const contentWrapper = document.querySelector('#contentWrapper');
-    containerIds.forEach((id, index) => {
-        const container = document.createElement('div');
+function createResultContainers(containerIds, content){
+    var contentWrapper = document.querySelector('#contentWrapper');
+    containerIds.forEach((id, index) =>{
+        var container = document.createElement('div');
         container.className = 'result_container';
         container.id = id;
         container.innerHTML = content[index]; // Добавление контента
         contentWrapper.appendChild(container);
     });
 }
-const tests = [];
-for (const key in data) {
-    if (data[key].test) {
+var tests = [];
+for (var key in data){
+    if (data[key].test){
         tests.push(data[key].test);
     }
 }
@@ -28,47 +28,41 @@ var totalCount = 0;
 var questionPlaceTrueCount = 0;
 var questionPlaceFalseCount = 0;
 // Проходим по всем ключам в localStorage
-for (var i = 0; i < localStorage.length; i++) {
+for (var i = 0; i < localStorage.length; i++){
     var key = localStorage.key(i);
-    // // console.log("Проверяем ключ:", key); // Отладочная информация
     // Проверяем, начинается ли ключ с "answer_"
-    if (key.startsWith("answer_")) {
+    if (key.startsWith("answer_")){
         var value;
-        try {
+        try{
             value = JSON.parse(localStorage.getItem(key)); // Парсим значение в объект
-        } catch (e) {
-            // console.error("Ошибка парсинга JSON для ключа:", key);
+        }catch (e){
             continue; // Пропустить объект, если он не парсится
         }
-        //console.log("Значение:", value); // Отладочная информация
         // Если объект содержит свойство questionPlace, анализируем его
-        if (value && value.questionPlace !== undefined) {
+        if (value && value.questionPlace !== undefined){
             totalCount++; // Увеличиваем общий счетчик
-            if (value.questionPlace) {
+            if (value.questionPlace){
                 questionPlaceTrueCount++; // Увеличиваем счетчик для questionPlace: true
-            } else {
+            }else{
                 questionPlaceFalseCount++; // Увеличиваем счетчик для questionPlace: false
             }
-        } else {
-            //console.log("Ключ не содержит questionPlace:", key); // Отладочная информация
+        }else{
+            console.log("Ключ не содержит questionPlace:", key); // Отладочная информация
         }
     }
 }
 if(totalCount !== scoreTests){
-    //console.log("Несовпадение длины localStorage и const data");
+    console.log("Несовпадение длины localStorage и var data");
 }
-if ((questionPlaceTrueCount + questionPlaceFalseCount) !== scoreTests) {
+if ((questionPlaceTrueCount + questionPlaceFalseCount) !== scoreTests){
     var questionPlaceFalseCount = scoreTests - questionPlaceTrueCount;
 } 
 // Результаты
-//console.log("Общее количество объектов:", totalCount);
-//console.log("Количество объектов с questionPlace: true:", questionPlaceTrueCount);
-//console.log("Количество объектов с questionPlace: false:", questionPlaceFalseCount);
-var percentOfAnswers =  Math.floor((questionPlaceTrueCount/scoreTests)*100)
+var percentOfAnswers =  Math.floor((questionPlaceTrueCount/scoreTests)*100);
 // Массив идентификаторов для контейнеров
-const containerIds = ['result_container_1', 'result_container_2', 'result_container_3'];
+var containerIds = ['result_container_1', 'result_container_2', 'result_container_3'];
 // Массив контента для каждого контейнера
-const content = [
+var content = [
     `1. Количество тестовых (оцениваемых) заданий: <span id="place_question_number">${scoreTests}</span>`, //Не правильно
     `2. Ваш результат: <span id="place_question_percent">${Math.floor((questionPlaceTrueCount/scoreTests)*100)} <b>%</b></span>`,
     `<div class="correct_answ"> Количество правильных ответов: <p id="result_place_1">${questionPlaceTrueCount}</p></div> 
