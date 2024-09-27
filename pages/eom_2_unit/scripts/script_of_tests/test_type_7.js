@@ -148,6 +148,12 @@ function checkParagraph(){
                         shouldDecreaseAttempts = true; // Устанавливаем флаг для уменьшения попыток
                     };
                 });
+                if (isCorrect){
+                    backWardBtn.classList.remove('gray_dis');
+                    backWardBtn.disabled = false;
+                    nextBtn.classList.remove('gray_dis');
+                    nextBtn.disabled = false;
+                }
                 localStorage.setItem('answer_from_' + index, JSON.stringify({ questionPlace: allCorrect }));
                 if (shouldDecreaseAttempts){
                     attempts--;
@@ -160,10 +166,6 @@ function checkParagraph(){
                 document.getElementById('control_button_3').style.display = 'inline-block';
             };
             answerButton.onclick = function(){
-                backWardBtn.classList.remove('gray_dis');
-                backWardBtn.disabled = false;
-                nextBtn.classList.remove('gray_dis');
-                nextBtn.disabled = false;
                 var index = `index_${currentPageIndex}`;
                 checkAnswers8(index);
             };

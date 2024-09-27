@@ -176,6 +176,7 @@ function checkParagraph(){
                 listItems[0].children[i].classList.add('correct');
                 listItems[0].children[i].classList.remove('incorrect');
                 partiallyCorrect = true;
+
             }
         }
         if (!isCorrect){
@@ -188,15 +189,17 @@ function checkParagraph(){
                 }
             }
         }
+        if (isCorrect){
+            backWardBtn.classList.remove('gray_dis');
+            backWardBtn.disabled = false;
+            nextBtn.classList.remove('gray_dis');
+            nextBtn.disabled = false;
+        }
         answerButton.classList.add('hidden');
         restartButton.classList.remove('hidden');
         localStorage.setItem('answer_form_' + `index_${currentPageIndex}`, JSON.stringify({questionPlace: isCorrect}));
     }
     answerButton.onclick = function(){
-        backWardBtn.classList.remove('gray_dis');
-        backWardBtn.disabled = false;
-        nextBtn.classList.remove('gray_dis');
-        nextBtn.disabled = false;
         checkAnwser();
         answerButton.classList.add('hidden');
         restartButton.classList.remove('hidden');

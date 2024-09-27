@@ -179,6 +179,12 @@ function checkParagraph(){
                     if (!isCorrect){
                         isTestCorrect = false;
                     }
+                    if (isCorrect){
+                        backWardBtn.classList.remove('gray_dis');
+                        backWardBtn.disabled = false;
+                        nextBtn.classList.remove('gray_dis');
+                        nextBtn.disabled = false;
+                    }
                     localStorage.setItem('answer_form_index_' + `${currentPageIndex}`, JSON.stringify({questionPlace: isCorrect}));
                 });
                 // Уменьшаем количество попыток, если необходимо
@@ -193,10 +199,6 @@ function checkParagraph(){
                 localStorage.setItem('answer_form_index_' + `${currentPageIndex}`, JSON.stringify({questionPlace: isTestCorrect}));
             }
             answerButton.onclick = function(){
-                backWardBtn.classList.remove('gray_dis');
-                backWardBtn.disabled = false;
-                nextBtn.classList.remove('gray_dis');
-                nextBtn.disabled = false;
                 checkAnwser5();
                 answerButton.classList.add('hidden');
                 restartButton.classList.remove('hidden');

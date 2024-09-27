@@ -35,8 +35,11 @@ function checkParagraph(){
     columnsContainer.id = 'colmuns';
     var rowContainer = document.createElement('div');
     rowContainer.id = 'rows';
-    mainDiv.appendChild(columnsContainer);
-    mainDiv.appendChild(rowContainer);
+    var mainTestDiv = document.createElement('div');
+    mainTestDiv.classList = 'test_div';
+    mainDiv.appendChild(mainTestDiv);
+    mainTestDiv.appendChild(columnsContainer);
+    mainTestDiv.appendChild(rowContainer);
     var data2 = {};
     init();
     function init() {
@@ -215,6 +218,12 @@ function checkParagraph(){
                 shouldDecreaseAttempts = true; // Устанавливаем флаг для уменьшения попыток
             };
         });
+        if (isCorrect){
+            backWardBtn.classList.remove('gray_dis');
+            backWardBtn.disabled = false;
+            nextBtn.classList.remove('gray_dis');
+            nextBtn.disabled = false;
+        }
         // Уменьшаем количество попыток, если необходимо
         if (shouldDecreaseAttempts){
             attempts--;
@@ -226,10 +235,6 @@ function checkParagraph(){
         localStorage.setItem(`answer_from_index_${currentPageIndex}`, JSON.stringify({questionPlace: isCorrect}));
     };
     answerButton.onclick = function() {
-        backWardBtn.classList.remove('gray_dis');
-        backWardBtn.disabled = false;
-        nextBtn.classList.remove('gray_dis');
-        nextBtn.disabled = false;
         checkAnswer7();
         answerButton.classList.add('hidden');
         restartButton.classList.remove('hidden');

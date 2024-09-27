@@ -143,6 +143,9 @@ p{
 }
 
 .buttons_div button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 	height: 50px;
 	width: 150px;
 	margin-left: 10px;
@@ -363,13 +366,16 @@ p{
 }
 
 .answer_form {
-    min-width: 600px;
+    min-width: 0px;
     max-width: 1000px;
-    width: 100%;
-    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    width: 100% !important;
 }
 
 .answers_btn form div {
+    width: 85% !important;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -452,7 +458,9 @@ p{
     padding: 15px;
     font-size: 25px;
     border-radius: 10px;
+    width: 100% !important;
     min-width: 200px;
+    max-width: 250px;
 }
 
 .description_w_input_2 {
@@ -589,9 +597,9 @@ ul li div{
 }
 
 .main_wrapper img{
+    max-width: 600px;
     margin-left: 25px;
     margin-right: 25px;
-    min-width: 450px;
     width: 35%;
 }
 
@@ -737,16 +745,19 @@ ul li div{
     text-align: center;
     margin: 10px;
     border: 1px solid #0070c0;
-    background-color: #0070c0;
-    color: #fff;
-    font-weight: 700;
+    background-color: #ffffff;
+    color: black;
+    font-weight: 500;
     border-radius: 25px;
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
     padding: 10px;
-    width: 250px;
+    max-width: 250px !important;
     border-radius: 15px;
     cursor: grab;
-
+    width: 100% !important;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .popup_content{
@@ -809,8 +820,8 @@ ul li div{
     padding: 10px;
     min-height: 50px;
     min-width: 50%;
-    border: 1px solid rgba(0, 114, 192, 0.05);
-    background-color: rgba(0, 114, 192, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: rgba(226, 226, 226, 0.1);
     border-radius: 25px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
 }
@@ -979,7 +990,15 @@ ul li div{
 }
 
 .answer_image {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.test_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .test_wrapper{
@@ -1046,9 +1065,44 @@ ul li div{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: rgba(226, 226, 226, 0.1);
+    max-width: 1180px;
+    border-radius: 25px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
 @media (max-width: 1200px) {
+    .image_test_type_2 video{
+        margin-bottom: 25px;
+    }
+   .drag_place{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .row{
+        position: sticky;
+        width: initial;
+        right: clamp(15px,1.2vw,50px);
+        top: 30%;
+        z-index: 2; /* Приоритет отображения */
+    }
+
+
+    .image_test_type_2{
+        order: -1;
+        text-align: center;
+        width: 100% !important;
+        margin-bottom: 25px;
+    }
+    video{
+        margin-bottom: 25px;
+        max-width: initial !important;
+        min-width: initial !important;
+    }
+
     .test_wrapper{
         min-width: 100% !important;
         margin-bottom: 25px;
@@ -1111,7 +1165,8 @@ ul li div{
     }
 
     .image_test_type_2 {
-        width: 60%;
+        max-width: 600px;
+        width: 100% !important;
     }
 
     #dynamic-content{
@@ -1127,24 +1182,23 @@ ul li div{
         margin-bottom: 25px;
     }
 
-    ul li div{
-        width: 60vw;
-    }
-
     .answer_form_img{
         margin-left: 0;
         width: 90%;
+    }
+
+    .dynamic-content{
+        width: 100%;
+    }
+
+    .list{
+        width: 70% !important;
     }
 
     .answers_btn{
         flex-direction: column;
     }
     
-    .answer_form{
-        width: 95vw;
-        margin-left: 0px;
-    }
-
     #footer{
         display: flex;
         flex-direction: column;
@@ -1211,6 +1265,49 @@ ul li div{
 }
 
 @media (max-width: 950px) {
+    .subtitle_wrapper{
+        margin-bottom: 0;
+    }
+
+    .test_div{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    #rows{
+        max-width: 300px;
+        position: sticky !important;
+        width: initial;
+        right: clamp(15px,1.2vw,50px);
+        top: 30%;
+        z-index: 2; /* Приоритет отображения */
+    }
+
+    #colmuns{
+        justify-content: flex-start;
+    }
+
+    .col{
+        margin-left: 0;
+    }
+
+    .col h3{
+        font-size: 16px;
+    }
+
+    .col-ul {
+        padding: 5px;
+        min-width: 210px;
+    }
+
+    .item7{
+        max-height: 200px;
+        width: 90%;
+        font-size: 11px;
+    }
+
     #colmuns{
         flex-direction: column;
         align-items: center;
@@ -1241,7 +1338,7 @@ ul li div{
         max-width: 150px;
     }
     .item3{
-        overflow: hidden;
+        overflow-x: hidden;
         text-overflow: ellipsis;
         font-size: 15px !important;
     }
@@ -1249,12 +1346,65 @@ ul li div{
 
 
 @media (max-width: 700px) {
+    .test-image{
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .item{
+        min-width: initial !important;
+        width: 100% !important;
+        padding: 12px !important;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
     .drag1{
         gap: 10px;
     }
+    .image_test_type_2 {
+        min-width: initial !important;
+        width: 100% !important;
+    }
+    body{
+        overflow-x: hidden !important;
+    }
+
+    .answer_div{
+        width: 100% !important;
+        padding: 5px !important;
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+        padding-right: 10px !important;
+    }
+    
+    .answer_div p{
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .answer_div p img{
+        border-radius: 10px !important;
+    }
+
+    .katex-html{
+        min-width: 50px !important;
+        width: 100% !important;
+    }
+
+    .answers_btn form div {
+        margin: 10px;
+        border-radius: 15px !important;
+    }
+
+    .answers_btn form div input {
+        height: 30px;
+        min-width: 45px;
+        max-width: 45px;
+    }
 
     .item_dr{
-
         font-size: 15px;
     }
 
@@ -1292,6 +1442,14 @@ ul li div{
 
 
 @media (max-width: 650px) {
+    #content{
+        padding: 0.5em;
+    }
+
+    .description_w_input_2{
+        margin: 0 !important;
+    }
+
     #result_container_3 {
         min-height: 135px;
     }
@@ -1331,12 +1489,19 @@ ul li div{
     }
 
     .item, .item2 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
         list-style-image: none;
         margin: 5px;
         padding: 10px;
         padding-left: 25px;
         cursor: grab;
         font-size: clamp(12px, 1.35vw, 20px);
+        overflow-x: hidden;
+        
+        text-overflow: ellipsis;
     }
 
     .subtitle_wrapper{
@@ -1360,8 +1525,7 @@ ul li div{
 
     ul li div{
         min-width: auto;
-        width: 250px;
-        height: 80px;
+        height: 50px;
     }
 
     footer{
@@ -1399,10 +1563,22 @@ ul li div{
         font-size: 15px;
     }
     .item_dr{
-        font-size: 13px;
+        font-size: 10px;
     }
     .correct_answ{
         font-size: 18px;
+    }
+
+    .drag1 {
+        gap: 1px !important;
+    }
+
+    .number{
+        font-size: 13px !important;
+    }
+
+    .list{
+        padding: 5px !important;
     }
 
     .correct_answ p{
@@ -1444,9 +1620,6 @@ ul li div{
         padding: 5px;
     }
 
-    .answer_form {
-        min-width: 350px;
-    }
     .answer_form p{
         font-size: 14px !important;
     }

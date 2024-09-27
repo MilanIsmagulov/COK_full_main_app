@@ -128,6 +128,12 @@ function checkParagraph(){
             };
             localStorage.setItem(`answer_from_index_${currentPageIndex}`, JSON.stringify({questionPlace: isCorrect}));
         });
+        if (isCorrect){
+            backWardBtn.classList.remove('gray_dis');
+            backWardBtn.disabled = false;
+            nextBtn.classList.remove('gray_dis');
+            nextBtn.disabled = false;
+        }
         // Уменьшаем количество попыток, если необходимо
         if (shouldDecreaseAttempts){
             attempts--;
@@ -138,10 +144,6 @@ function checkParagraph(){
         };
     };
     answerButton.onclick = function() {
-        backWardBtn.classList.remove('gray_dis');
-        backWardBtn.disabled = false;
-        nextBtn.classList.remove('gray_dis');
-        nextBtn.disabled = false;
         checkAnwser6();
         answerButton.classList.add('hidden');
         restartButton.classList.remove('hidden');

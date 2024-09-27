@@ -140,7 +140,14 @@ function waitForData() {
                         div.addEventListener('click', function() {
                             var input = this.querySelector('input[type="radio"], input[type="checkbox"]');
                             if (input) {
-                                input.checked = true;
+                                // Для радиокнопок устанавливаем значение в true
+                                if (input.type === 'radio') {
+                                    input.checked = true;
+                                }
+                                // Для чекбоксов инвертируем текущее состояние
+                                else if (input.type === 'checkbox') {
+                                    input.checked = !input.checked;
+                                }
                                 // Обновляем состояние кнопки после выбора
                                 updateButtonState();
                             }

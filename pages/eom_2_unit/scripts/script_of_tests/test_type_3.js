@@ -162,6 +162,12 @@ function checkParagraph(){
                         }
                     }
                 });
+                if (isCorrect){
+                    backWardBtn.classList.remove('gray_dis');
+                    backWardBtn.disabled = false;
+                    nextBtn.classList.remove('gray_dis');
+                    nextBtn.disabled = false;
+                }
                 if (!isCorrect){
                     // ЭТО ДЛЯ ОШИБОК
                     if (partiallyCorrect){
@@ -220,10 +226,6 @@ function checkParagraph(){
                 });
             });
             answerButton.onclick = function(){
-                backWardBtn.classList.remove('gray_dis');
-                backWardBtn.disabled = false;
-                nextBtn.classList.remove('gray_dis');
-                nextBtn.disabled = false;
                 checkAnwser4();
                 answerButton.classList.add('hidden');
                 restartButton.classList.remove('hidden');

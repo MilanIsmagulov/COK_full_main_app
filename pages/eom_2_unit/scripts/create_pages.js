@@ -15,9 +15,12 @@ function waitForData(){
         backWardBtn.classList.add('gray_dis');
         backWardBtn.disabled = true;
         function clearLocalStorage(){
-            if (currentPageIndex == 1){
-                //localStorage.clear();
-            };
+
+        };
+        if (currentPageIndex == 1){
+            for(var i = 1; i <= Object.keys(data).length; i++){
+                localStorage.setItem(`attempts_${i}`, '2');
+            }
         };
         // Функция для создания блока с текстом и изображением
         function createTextWithImage(paragraph){
