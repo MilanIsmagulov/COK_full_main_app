@@ -71,4 +71,3 @@ var content = [
 ];
 // Вызов функции для создания контейнеров с контентом
 createResultContainers(containerIds, content);
-

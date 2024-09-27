@@ -1,14 +1,11 @@
 window.dataLoaded = false;
-
 let title_of_eom = themeOfDEC;
-
 const data = {
     "index_1":{
         "subtitle": "subtitle 2 <p class='black_sub'>dgdgdgdgdfgdg</p>",
         "step_of_popup": "step 2",
         "test":[
             {"type": 1},
-           
             {"answers": [
                 "First ",
                 "<img class='answer_image' src='./content/test_image.png' alt='sfsf'>",
@@ -24,7 +21,6 @@ const data = {
         "step_of_popup": "step 2",
         "test":[
             {"type": 1},
-           
             {"answers": [
                 "First dfgdgdgdgdg Answer",
                 "Second ываыаыываываыаыа Answer",
@@ -180,5 +176,4 @@ const data = {
         "result":[]
     },
 }
-
 window.dataLoaded = true;

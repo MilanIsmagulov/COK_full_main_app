@@ -10,29 +10,21 @@ const mainBody = document.getElementById('main_body_1');
 const backWardBtn = document.getElementById('control_button_1');
 const nextBtn = document.getElementById('control_button_4');
 const answerBtn = document.getElementById('control_button_2');
-
-
-
 function waitForData() {
     if (window.dataLoaded) {
-
         function addFirstBtn(){
             const answerBtn = document.getElementById('control_button_2');
             const backWardBtn = document.getElementById('control_button_1');
             backWardBtn.classList.remove('hidden');
             answerBtn.classList.remove('hidden');
         }
-
         backWardBtn.classList.add('gray_dis');
         backWardBtn.disabled = true;
-
         function clearLocalStorage(){
             if (currentPageIndex == 1){
                 // localStorage.clear();
             }  
         }
-
-
         // Функция для создания блока с текстом и изображением
         function createTextWithImage(paragraph) {
             document.getElementById('control_button_3').style.display = 'none';
@@ -46,7 +38,6 @@ function waitForData() {
             const container = document.createElement('div');
             // Присвоение класса контейнеру
             container.className = 'text_with_img';
-
             // Перебор элементов параграфа
             paragraph.forEach(item => {
                 // Если есть текст, создаем и добавляем текстовый элемент
@@ -57,7 +48,6 @@ function waitForData() {
                 }
                 // Если есть изображение, создаем и добавляем элемент изображения
                 if (item.image) {
-
                     const imgContainer = document.createElement('div');
                     imgContainer.className = 'img_with_sgn';
                     let imgElement;
@@ -79,11 +69,9 @@ function waitForData() {
                     }
                 }
             });
-
             // Возвращаем созданный контейнер
             return container;
         }
-
         // Функция для создания блока только с изображением
         function createOnlyImage(paragraph) {
             document.getElementById('control_button_3').style.display = 'none';
@@ -97,7 +85,6 @@ function waitForData() {
             const container = document.createElement('div');
             // Присвоение класса контейнеру
             container.className = 'only_img';
-
             // Перебор элементов параграфа
             paragraph.forEach(item => {
                 // Если есть изображение, создаем и добавляем элемент изображения
@@ -110,7 +97,6 @@ function waitForData() {
                         imgElement = document.createElement('video');
                         imgElement.controls = "controls";
                     }
-                
                     if (imgElement) {  // Проверяем, что элемент был создан
                         imgElement.src = item.image_path;
                         imgElement.alt = 'image';
@@ -121,11 +107,9 @@ function waitForData() {
                     }
                 }
             });
-
             // Возвращаем созданный контейнер
             return container;
         }
-
         // Функция для создания блока только с текстом
         function createPlainText(paragraph) {
             document.getElementById('control_button_3').style.display = 'none';
@@ -139,7 +123,6 @@ function waitForData() {
             const container = document.createElement('div');
             // Присвоение класса контейнеру
             container.className = 'plane_text';
-
             // Перебор элементов параграфа
             paragraph.forEach(item => {
                 // Если есть текст, создаем и добавляем текстовый элемент
@@ -149,18 +132,15 @@ function waitForData() {
                     container.appendChild(textElement);
                 }
             });
-
             // Возвращаем созданный контейнер
             return container;
         }
-
         // Функция для отображения страницы
         function displayPage(index) {
             // Получение данных страницы по индексу
             const pageData = data[`index_${index}`];
             // Очистка содержимого контейнера
             contentDiv.innerHTML = '';
-
             // Добавление подзаголовка с нумерацией
             if (pageData.subtitle) {
                 const subtitleWrapper = document.createElement('div');
@@ -205,12 +185,10 @@ function waitForData() {
             } else if (pageData.hasOwnProperty('test')) {
                 const answerBtn = document.getElementById('control_button_2');
                 answerBtn.classList.remove('hidden');
-            
                 pageData.test.forEach(testItem => {
                     if (testItem.hasOwnProperty('type')) {
                         switch (testItem.type) {
                             case 1:
-                                
                                 replaceScript('./scripts/script_of_tests/test_type_1.js', 'test-script');
                                 break;
                             case 2:
@@ -240,19 +218,15 @@ function waitForData() {
                         }
                     }
                 });
-
             } else if (pageData.hasOwnProperty('result')) {
-
                 document.getElementById('control_button_3').style.display = 'none';
                 document.getElementById('control_button_2').style.display = 'inline-block';
-
                 const script = document.createElement('script');
                 script.src = './scripts/script_of_tests/result_of_test.js';
                 script.async = true;
                 script.onload = () => {};
                 document.head.appendChild(script);
             }
-
             // Добавление содержимого модального окна
             const popupDiv = document.createElement('div');
             const closePopUpBtn = document.createElement('button');
@@ -271,7 +245,6 @@ function waitForData() {
             }
             contentDiv.appendChild(popupDiv);
             popupDiv.appendChild(closePopUpBtn);
-
             function showPopUp(){
                 // Блокируем скролл страницы
                 const bodyScroll = document.getElementById('contentWrapper');
@@ -283,36 +256,28 @@ function waitForData() {
                 closeBtn.classList.remove('gray_dis');
                 closeBtn.classList = 'close_btn';
             }
-
             function closePopUp(){
-                
                 const bodyScroll = document.getElementById('contentWrapper')
                 bodyScroll.style.overflow = 'auto';
                 popupDiv.classList.add('disabled');
                 popupDiv.classList.remove('enabled');
             }
-
             document.getElementById('close_popup_btn').addEventListener('click', () => closePopUp());
             document.getElementById('popup_button_1').addEventListener('click', () => showPopUp());
-
             // Зуууум
             const zoomableImages = document.querySelectorAll('.zoomable');
-
             // Для сенсорных устройств отслеживаем время между тапами
             let lastTouchTime = 0;
-        
             zoomableImages.forEach(image => {
                 // Добавляем обработчик для двойного клика
                 image.addEventListener('dblclick', function(event) {
                     event.preventDefault();
                     zoom.to({ element: event.target });
                 });
-        
                 // Обрабатываем двойной тап на сенсорных устройствах
                 image.addEventListener('touchend', function(event) {
                     const currentTime = new Date().getTime();
                     const timeDiff = currentTime - lastTouchTime;
-        
                     // Если время между тапами меньше 300 мс, считаем это двойным тапом
                     if (timeDiff < 300 && timeDiff > 0) {
                         event.preventDefault();
@@ -322,15 +287,12 @@ function waitForData() {
                 });
             });
         }
-
         // Функция для создания маркеров страниц
         function createMarkers() {
-            
             // Получение количества страниц
             const numOfPages = Object.keys(data).length;
             // Очистка контейнера маркеров
             stepMarkerPlace.innerHTML = '';
-
             // Создание маркеров для каждой страницы
             for (let i = 0; i < numOfPages; i++) {
                 let marker = document.createElement('img');
@@ -347,47 +309,36 @@ function waitForData() {
                 stepMarkerPlace.appendChild(marker);
             }
         }
-
-
-
         // Очистка контента страницы перед загрузкой нового теста
         function clearContent() {
             contentDiv.innerHTML = '';
         };
-
         // Обновленная функция для замены скрипта теста
         function replaceScript(src, id) {
             const existingScript = document.getElementById(id);
             if (existingScript) {
                 existingScript.remove();
             };
-
             const script = document.createElement('script');
             script.src = src;
             script.defer = true;
             script.id = id;
             document.head.appendChild(script);
         };
-
         // Удаление скриптов тестов и очистка контента перед переходом на новую страницу
         function removeTestScripts() {
             const existingScript = document.getElementById('test-script');
             if (existingScript) {
                 existingScript.remove();
             };
-
             clearContent();
         };
-
         function resetPage(){
             updatePage(0);
         };
-
         // Обновленная функция для обновления страницы
         function updatePage(step) {
-
             showAnswerBtn();
-            
             // Удаляем скрипты тестов перед переходом на новую страницу
             removeTestScripts();
             clearLocalStorage();
@@ -402,7 +353,6 @@ function waitForData() {
                 // Обновление маркеров
                 createMarkers();
             };
-
             const closeBtn2 = document.querySelector('#close_popup_btn');
             closeBtn2.disabled = false;
             closeBtn2.classList.remove('gray_dis');
@@ -430,33 +380,23 @@ function waitForData() {
                     left: 0,
                     behavior: 'auto' // Мгновенно (auto) или плавно (smooth)
                 });
-                
             }, 0);
         }
-
         function showAnswerBtn(){
             answerButton.classList.add('gray_dis')
             answerButton.disabled = true;
             restartButton.classList.add('hidden')
         }
-
         // Добавление обработчиков событий для кнопок навигации
         document.getElementById('control_button_1').addEventListener('click', () => updatePage(-1));
         document.getElementById('control_button_4').addEventListener('click', () => updatePage(1));
         document.getElementById('control_button_3').addEventListener('click', () => updatePage(0));
-
         // Начальное отображение первой страницы и маркеров
         displayPage(currentPageIndex);
         createMarkers();
-
-        //// console.log("Данные загружены, продолжаем выполнение скрипта.");
     } else {
         // Если данные ещё не загружены, ждем и проверяем снова
         setTimeout(waitForData, 50);
     }
 }
-
 waitForData();
-
-
-

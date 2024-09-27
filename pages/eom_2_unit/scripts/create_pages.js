@@ -15,7 +15,6 @@ function waitForData(){
         backWardBtn.classList.add('gray_dis');
         backWardBtn.disabled = true;
         function clearLocalStorage(){
-
         };
         if (currentPageIndex == 1){
             for(var i = 1; i <= Object.keys(data).length; i++){

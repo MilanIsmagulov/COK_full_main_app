@@ -3,7 +3,6 @@ let currentPageIndex = 1;
 let currentTestIndex = null;
 const testContainer = document.getElementById('test-container');
 const contentDiv = document.getElementById('content');
-
 allThemesButtons.forEach((button, index) => {
     button.onclick = function() {
         updatePage(index);
@@ -13,19 +12,15 @@ allThemesButtons.forEach((button, index) => {
         mainContentDiv.classList.add('theme_page_div');
     };
 });
-
 function updatePage(index) {
     displayPage(index);
-    // console.log(`Button ${index} clicked!`);
 }
-
 // Функция для создания блока с текстом и изображением
 function createTextWithImage(paragraph) {
     // Создание контейнера
     const container = document.createElement('div');
     // Присвоение класса контейнеру
     container.className = 'text_with_img';
-
     // Перебор элементов параграфа
     paragraph.forEach(item => {
         if (item.subtitle2lvl) {
@@ -42,7 +37,6 @@ function createTextWithImage(paragraph) {
         }
         // Если есть изображение, создаем и добавляем элемент изображения
         if (item.image) {
-
             const imgContainer = document.createElement('div');
             imgContainer.className = 'img_with_sgn';
             let imgElement;
@@ -64,18 +58,15 @@ function createTextWithImage(paragraph) {
             }
         }
     });
-
     // Возвращаем созданный контейнер
     return container;
 }
-
 // Функция для создания блока только с изображением
 function createOnlyImage(paragraph) {
     // Создание контейнера
     const container = document.createElement('div');
     // Присвоение класса контейнеру
     container.className = 'only_img';
-
     // Перебор элементов параграфа
     paragraph.forEach(item => {
         if (item.subtitle2lvl) {
@@ -94,7 +85,6 @@ function createOnlyImage(paragraph) {
                 imgElement = document.createElement('video');
                 imgElement.controls = "controls";
             }
-        
             if (imgElement) {  // Проверяем, что элемент был создан
                 imgElement.src = item.image_path;
                 imgElement.alt = 'image';
@@ -105,18 +95,15 @@ function createOnlyImage(paragraph) {
             }
         }
     });
-
     // Возвращаем созданный контейнер
     return container;
 }
-
 // Функция для создания блока только с текстом
 function createPlainText(paragraph) {
     // Создание контейнера
     const container = document.createElement('div');
     // Присвоение класса контейнеру
     container.className = 'plane_text';
-
     // Перебор элементов параграфа
     paragraph.forEach(item => {
         if (item.subtitle2lvl) {
@@ -132,19 +119,15 @@ function createPlainText(paragraph) {
             container.appendChild(textElement);
         }
     });
-
     // Возвращаем созданный контейнер
     return container;
 }
-
-
 // Функция для отображения страницы
 function displayPage(index) {
     // Получение данных страницы по индексу
     const pageData = data[`index_${index}`];
     // Очистка содержимого контейнера
     contentDiv.innerHTML = '';
-
     // Добавление подзаголовка с нумерацией
     if (pageData.subtitle) {
         const subtitleWrapper = document.createElement('div');
@@ -159,26 +142,20 @@ function displayPage(index) {
         const subtitleSpan = document.createElement('span');
         subtitleSpan.className = 'pink_subtitle';
         subtitleSpan.innerHTML = ` ${pageData.subtitle}`;
-        // subtitleDiv.innerHTML = `${index + 1}.`;
         spanOfDiscription.classList = 'span_of_discription';
         subtitleDiv.appendChild(subtitleSpan);
         subtitleWrapper.appendChild(subtitleDiv);
         subtitleWrapper.appendChild(spanOfDiscription);
-        // spanOfDiscription.appendChild(subtitleButtonPop);
-        // spanOfDiscription.innerHTML += `${index + 1}/${Object.keys(data).length}`
     }
     // Проверка наличия параграфов на странице
     if (pageData.hasOwnProperty('paragraph_1')) {
-
         // Перебор всех параграфов страницы
         for (let key in pageData) {
-
             if (key.startsWith('paragraph_')) {
                 const paragraph = pageData[key];
                 let element;
                 // Определение типа параграфа и создание соответствующего элемента
                 if (paragraph.some(item => item.text) && paragraph.some(item => item.image)) {
-
                     element = createTextWithImage(paragraph);
                 } else if (paragraph.some(item => item.image)) {
                     element = createOnlyImage(paragraph);
@@ -189,26 +166,21 @@ function displayPage(index) {
                 contentDiv.appendChild(element);
             }
         }
-
     } 
     // Зуууум
     const zoomableImages = document.querySelectorAll('.zoomable');
-
     // Для сенсорных устройств отслеживаем время между тапами
     let lastTouchTime = 0;
-
     zoomableImages.forEach(image => {
         // Добавляем обработчик для двойного клика
         image.addEventListener('dblclick', function(event) {
             event.preventDefault();
             zoom.to({ element: event.target });
         });
-
         // Обрабатываем двойной тап на сенсорных устройствах
         image.addEventListener('touchend', function(event) {
             const currentTime = new Date().getTime();
             const timeDiff = currentTime - lastTouchTime;
-
             // Если время между тапами меньше 300 мс, считаем это двойным тапом
             if (timeDiff < 300 && timeDiff > 0) {
                 event.preventDefault();

@@ -13,13 +13,10 @@ var anwserArr3 = testObj.find(item => item.answers).answers; //
 var pathImg = testObj.find(item => item.image !== undefined).image; // путь к фотке
 var leftColLength = testObj.find(item => item.leftColumn).leftColumn; //кол-во колонн слева
 var rightColLength = testObj.find(item => item.rightColumn).rightColumn; //кол-во колонн справа
-
 answerButton.classList.remove('gray_dis');
 answerButton.disabled = false;
 restartButton.classList.add('hidden');
 restartButton.disabled = false;
-// console.log(anwserArr3, leftColLength, rightColLength, pathImg);
-
 var drag3 = document.createElement('div');
 drag3.classList = 'drag3';
 drag3.id = 'drag3';
@@ -38,35 +35,29 @@ leftColElem.id = 'left-col';
 var rightColElem = document.createElement('div');
 rightColElem.classList = 'right-col';
 rightColElem.id = 'right-col';
-
 dragInner.appendChild(drag3);
 dragInner.appendChild(row2);
 contentDiv.appendChild(dragInner);
 drag3.appendChild(leftColElem);
 drag3.appendChild(imgPlc)
 drag3.appendChild(rightColElem);
-
 var leftCol = [];
 var rightCol = [];
 var fullList = [];
 var realIndex = 0;
 var rowList = [];
-
 function waitForData() {
     if (window.dataLoaded) {
         createRow();
         createFields();
         createImg();
-
         function createImg() {
             var imgOuter = document.getElementById('img');
-            
             var img = document.createElement('img');
             img.setAttribute('src', pathImg);
             img.setAttribute('alt', 'img');
             imgOuter.appendChild(img);
         }
-
         function createRow() {
             [...anwserArr3]
             .map(a => ({ value: a, sort: Math.random() }))
@@ -74,18 +65,14 @@ function waitForData() {
             .map(a => a.value)
             .forEach((item, index) => {
                 var rowItem = document.createElement('li')
-
                 rowItem.setAttribute('id', index)
                 rowItem.classList.add('item3')
                 rowItem.draggable = 'true'
                 rowItem.innerText = item
-
                 rowList.push(rowItem)
                 row2.appendChild(rowItem)
-
             })
         }
-
         function createFields() {
             for (var i = 0; i < leftColLength; i++) {
                 var field = document.createElement('div')
@@ -95,7 +82,6 @@ function waitForData() {
                 leftColElem.appendChild(field)
                 realIndex++
             }
-
             for (var i = 0; i < rightColLength; i++) {
                 var field = document.createElement('div')
                 field.setAttribute('id', realIndex)
@@ -106,8 +92,6 @@ function waitForData() {
             }
             fullList = [...leftCol, ...rightCol]
         }
-
-
         function dragStart2() {
             dragElem2 = this;
             if (this.parentNode.getAttribute('index') === 'row') {
@@ -116,23 +100,18 @@ function waitForData() {
                 startIndx = +this.closest('.field').getAttribute('index')
             }
         }
-
         function dragEnd2() {
             dragElem2 = null
         }
-
         function dragEnter2() {
             this.classList.add('over');
         }
-
         function dragLeave2() {
             this.classList.remove('over');
         }
-
         function dragOver2(e) {
             e.preventDefault();
         }
-
         function dragDrop2() {
             if (this.getAttribute('index') === 'row') {
                 endIndx = this.getAttribute('index');
@@ -153,35 +132,27 @@ function waitForData() {
             }
             this.classList.remove('over');
         }
-
         function swap(end, start) {
             var itemOne = rowList[start]
             var itemTwo = fullList[end].querySelector('.item3')
-
             rowList[start].replaceWith(itemTwo)
             fullList[end].appendChild(itemOne)
         }
-
         function swapItems2(fromIndex, toIndex) {
             var itemOne = fullList[fromIndex].querySelector('.item3');
             var itemTwo = fullList[toIndex].querySelector('.item3');
-
             fullList[fromIndex].appendChild(itemTwo);
             fullList[toIndex].appendChild(itemOne);
         }
-
         function checkAnwser5() {
             let isTestCorrect = true; // Общая переменная, которая определяет правильность всего теста
-        
             fullList.forEach((item, index) => {
                 let isCorrect = true; // Локальная переменная для проверки каждого элемента
-        
                 if (item.querySelector('.item3')?.innerText.trim() === undefined) {
                     item.classList.add('incorrect');
                     isCorrect = false;
                 } else {
                     let itemName = item.querySelector('.item3').innerText.trim();
-        
                     if (itemName !== anwserArr3[index]) {
                         item.classList.add('incorrect');
                         isCorrect = false;
@@ -190,19 +161,15 @@ function waitForData() {
                         item.classList.add('correct');
                     }
                 }
-        
                 // Если хотя бы один элемент неправильный, общий результат теста - неверный
                 if (!isCorrect) {
                     isTestCorrect = false;
                 }
-        
                 localStorage.setItem('answer_form_index_' + `${currentPageIndex}`, JSON.stringify({questionPlace: isCorrect}));
             });
-        
             // Сохраняем общий результат теста
             localStorage.setItem('answer_form_index_' + `${currentPageIndex}`, JSON.stringify({questionPlace: isTestCorrect}));
         }
-
         answerButton.onclick = function() {
             backWardBtn.classList.remove('gray_dis');
             backWardBtn.disabled = false;
@@ -214,16 +181,12 @@ function waitForData() {
             document.getElementById('control_button_2').style.display = 'none';
             document.getElementById('control_button_3').style.display = 'inline-block';
         };
-
         // Выбор строки, в которую будут добавляться sortable-элементы
         var row = document.getElementById('row2');
-
         // Выбор всех элементов с классом 'field'
         var fields = document.querySelectorAll('.field');
-
         // Преобразование NodeList в массив для удобства работы
         var arr = Array.from(fields);
-
         new Sortable(row, {
             group: {
                 name: 'shared',
@@ -236,7 +199,6 @@ function waitForData() {
                 }
             }
         });
-
         for (var i of arr) {
             new Sortable(i, {
                 group: 'shared',
@@ -251,11 +213,9 @@ function waitForData() {
                         } else {
                             existingItem = targetList.children[0];
                         }
-                        
                         var sourceList = e.from;
                         sourceList.appendChild(existingItem);
                         targetList.appendChild(itemEl);
-
                         if (targetList.className != "field") itemEl.style = "";
                         if (sourceList.className == "row2") existingItem.style = "";
                     }
@@ -265,11 +225,9 @@ function waitForData() {
                 }
             });
         }
-
     } else {
         // Если данные ещё не загружены, ждем и проверяем снова
         setTimeout(waitForData, 50);
     }
 }
-
 waitForData();

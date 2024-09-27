@@ -11,7 +11,7 @@ function waitForData() {
             var testData = data[index];
             // Проверяем наличие testData
             if (!testData) {
-                //console.error('Invalid test data for index:', index);
+                console.error('Invalid test data for index:', index);
                 return; // Полностью прерываем выполнение функции
             }
             // Если найден ключ paragraph_1, прерываем выполнение
@@ -374,7 +374,6 @@ function waitForData() {
         // Инициализация первого теста при загрузке страницы
         resetTest();
         // Логика, которая зависит от данных
-        //console.log("Данные загружены, продолжаем выполнение скрипта.");
     } else {
         // Если данные ещё не загружены, ждем и проверяем снова
         setTimeout(waitForData, 50);

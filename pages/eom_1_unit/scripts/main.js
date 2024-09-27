@@ -11,11 +11,8 @@ mainBody.appendChild(backgroundColor);
 backgroundImage.classList = 'background_image';
 mainBody.appendChild(backgroundImage);
 blackHeader.innerHTML = originalTitle;
-
 var typeOfDrop = `<img width="100%" src="./content/background_${background_type}.jpg" alt="background">`;
-
 backgroundImage.innerHTML = typeOfDrop;
-
 function waitForData() {
     if (window.dataLoaded){
         miniHead.innerHTML = originalTitle;
@@ -28,7 +25,6 @@ function waitForData() {
                 restoreTitle(blackHeader, originalTitle);
             }
         });
-
         window.addEventListener('resize',() => {
             let windowWidth  = window.innerWidth;
             if (windowWidth  <=  650) {
@@ -37,7 +33,6 @@ function waitForData() {
                 restoreTitle(blackHeader, originalTitle);
             }
         });
-
         function restoreTitle(element, originalTitle) {
             element.innerText = originalTitle;  // Восстанавливаем оригинальный заголовок
         }
@@ -49,47 +44,36 @@ function waitForData() {
                 element.innerHTML = shortenedTitle;  // Обновляем заголовок элемента
             }
         }
-
         function adjustContentWrapper() {
             const headerHeight = document.getElementById('header').offsetHeight;
             const contentWrapper = document.getElementById('contentWrapper');
-
             contentWrapper.style.paddingTop = headerHeight + 0 + 'px';
         }
-
         window.addEventListener('load', adjustContentWrapper);
         window.addEventListener('resize', adjustContentWrapper);
-
         const isMainWindow = document.getElementById('content');
         const contentWindow = document.createElement('div');
         contentWindow.classList.add('content__div');
         isMainWindow.appendChild(contentWindow);
-    
         const contentWindowLeft = document.createElement('div');
         contentWindowLeft.classList.add('content__div_left');
         contentWindowLeft.innerHTML = `${methodRecomendation}`;
         contentWindow.appendChild(contentWindowLeft);
-    
         const literaBtn = document.createElement('button');
         literaBtn.classList.add('content__litera_btn');
         literaBtn.id = 'content__litera_btn_1';
         literaBtn.innerHTML = 'Список использованной литературы';
         contentWindowLeft.appendChild(literaBtn);
-    
         const contentWindowCenter = document.createElement('div');
         contentWindowCenter.classList.add('content__div_center');
         contentWindow.appendChild(contentWindowCenter);
-    
         const contentWindowRight = document.createElement('div');
         contentWindowRight.classList.add('content__div_right');
         contentWindowRight.innerHTML = `<img src="./content/drop_logo_${dropType}.png" alt="drop_logo">`;
         contentWindow.appendChild(contentWindowRight);
-
         const themesNameArr = themesOfEOM1.split('\n');
-        
         if (typeOfButtons === 'hexagon') {
             var numberOfColumns, numberOfRows;
-        
             function changeRowsAndColumns() {
                 if (window.innerWidth > 1175) {
                     if (themesNameArr.length === 12) {
@@ -118,31 +102,25 @@ function waitForData() {
                     numberOfColumns = 1;
                     numberOfRows = Math.ceil(themesNameArr.length / numberOfColumns);
                 }
-
                 createHexagons();
             }
-        
             function createHexagons() {
                 let elem = document.querySelector('.content__div_center');
                 if (document.getElementById('content__litera_btn_1')) {
                     elem.innerHTML = '';
                     elem.classList.add('hexagon_center');
                 }
-                
                 // Создаем сетку гексагонов
                 for (let i = 0; i < numberOfColumns; i++) {
                     let columnsOfHexagon = document.createElement('div');
                     columnsOfHexagon.classList.add('columns__hexagon', 'col_' + i);
                     elem.appendChild(columnsOfHexagon);
-        
                     for (let j = 0; j < numberOfRows; j++) {
                         let hexagonBtn = document.createElement('button');
                         hexagonBtn.classList.add('button__hexagon_type', 'themes_button');
                         columnsOfHexagon.appendChild(hexagonBtn);
                     }
-
                 }
-        
                 let allHexagoneBtn = document.querySelectorAll('.button__hexagon_type');
                 allHexagoneBtn.forEach(function(item, index) {
                     if (index < themesNameArr.length) {
@@ -158,18 +136,14 @@ function waitForData() {
                         item.classList.add('hidden_block');
                     }
                 });
-
             }
-        
             // Первичная инициализация сетки
             changeRowsAndColumns();
-
             document.addEventListener('DOMContentLoaded', () => {
                 window.addEventListener('resize', () => {
                     changeRowsAndColumns();
                 });
             });
-
         } else if (typeOfButtons === 'lightning') {
             contentWindowCenter.classList.add('lightning');
             let leftColumn = document.createElement('div');
@@ -178,21 +152,17 @@ function waitForData() {
             let rightColumn = document.createElement('div');
             rightColumn.classList = 'right_column';
             contentWindowCenter.appendChild(rightColumn);
-
             // Подсчитываем количество элементов в массиве
             const totalThemes = themesNameArr.length;
             // Определяем количество элементов, которые должны попасть в левую колонку
             const leftColumnCount = Math.floor(totalThemes / 2);
-
             // Проходим по массиву и создаем кнопки
             themesNameArr.forEach((theme, index) => {
                 // Создаем кнопку
                 let button = document.createElement('button');
                 button.classList = 'lightning_button themes_button';
                 // Добавляем обработчик клика для кнопки
-
                 button.innerHTML = `<p class="themes_lightning">${index + 1}. ${theme}</p>`;
-
                 // Распределяем по колонкам
                 if (index < leftColumnCount) {
                     leftColumn.appendChild(button);
@@ -200,12 +170,10 @@ function waitForData() {
                     rightColumn.appendChild(button);
                 }
             });
-
             // Если количество элементов нечетное, последний элемент добавляется в правую колонку
             if (totalThemes % 2 !== 0) {
                 rightColumn.appendChild(rightColumn.removeChild(rightColumn.lastChild));
             }
-
             let lightningButton = document.querySelectorAll('.lightning_button');
             console.log(lightningButton.length)
             lightningButton.forEach((item) => {
@@ -217,12 +185,9 @@ function waitForData() {
                     item.classList.add('small');
                 }
             });
-
-
         } else if (typeOfButtons === 'tiles') {
             const themesNameArr = themesOfEOM1.split('\n');
             let numberOfColumns, numberOfRows;
-        
             function changeRowsAndColumns() {
                 if (window.innerWidth > 1175) {
                     if (themesNameArr.length === 12) {
@@ -253,9 +218,7 @@ function waitForData() {
                 }
                 createTiles();
             }
-
             changeRowsAndColumns();
-
             // Обновление кнопок с темами
             function createTiles() {
                 let elem = document.querySelector('.content__div_center');
@@ -263,21 +226,16 @@ function waitForData() {
                     elem.innerHTML = '';
                     elem.classList.add('tiles');
                 }
-
                 let centralRowIndex = Math.ceil(numberOfRows / 1); // Переместите сюда
                 if (themesNameArr.length >= 11) {
                     centralRowIndex = Math.floor(numberOfRows / 1);
                 }
-
                 let fragment = document.createDocumentFragment();
-            
                 for (let i = 0; i < numberOfRows; i++) {
                     let rowOfTiles = document.createElement('div');
                     rowOfTiles.classList.add('rows__tiles');
                     fragment.appendChild(rowOfTiles);
-            
                     let buttonsInRow = (i === centralRowIndex) ? numberOfColumns + 2 : numberOfColumns;
-            
                     for (let j = 0; j < buttonsInRow; j++) {
                         let tileBtn = document.createElement('button');
                         tileBtn.classList.add('button__tiles_type');
@@ -289,7 +247,6 @@ function waitForData() {
                         rowOfTiles.appendChild(tileBtn);
                     }
                 }
-
                 elem.appendChild(fragment);
                 var allTilesBtn = document.querySelectorAll('.button__tiles_type');
                 allTilesBtn.forEach(function(item, index) {
@@ -307,31 +264,26 @@ function waitForData() {
                     }
                 });
             }
-
             document.addEventListener('DOMContentLoaded', () => {
                 window.addEventListener('resize', () => {
                     changeRowsAndColumns();
                 });
             });
-
         } else if (typeOfButtons === 'video') {
             let videoTitle = document.createElement('div');
             videoTitle.classList = `video_title`
             videoTitle.innerHTML = `<h3 class="video_title_text">${videoTitle2}</h3>`;
             document.querySelector('#contentWrapper').appendChild(videoTitle);
             let contentDiv = document.querySelector('#content');
-            
             contentDiv.innerHTML = '';
             contentDiv.classList.add('video_div');
             let videoDiv = document.createElement('div');
             videoDiv.classList = 'video_content';
             videoDiv.innerHTML = `<video id="video_content_0" src="${pathToVideo}" controls="controls" controlslist="nodownload"></video>`;
             contentDiv.appendChild(videoDiv);
-
             let timingDiv = document.createElement('div');
             timingDiv.classList = 'video_timing';
             contentDiv.appendChild(timingDiv);
-
             let viewportHeight = window.innerHeight;
             let blackHeaderHeight = document.querySelector('#header').clientHeight;
             document.querySelector('#content').style.height = (viewportHeight - blackHeaderHeight*2 + 100) + 'px';
@@ -351,7 +303,6 @@ function waitForData() {
             </div>`
             timingDiv.innerHTML = timingStructure;
         }
-
         let mainDivContent = document.querySelector('#contentWrapper');
         let popUpStructure = 
         `<div id="popup_litera_1" class="popup disabled">
@@ -377,7 +328,6 @@ function waitForData() {
                 popupWindow.classList.remove('disabled');
             };
         }
-
         const video = document.querySelector('#video_content_0');
         const timingButtons = document.querySelectorAll('.timing_buttons');
         timingButtons.forEach((item) => {
@@ -389,7 +339,6 @@ function waitForData() {
                 video.currentTime = newTime; // Устанавливаем новое время
             };
         });
-
     } else {
         // Если данные ещё не загружены, ждем и проверяем снова
         setTimeout(waitForData, location.reload(),  50);
@@ -409,7 +358,6 @@ function waitForData() {
         }
         changeLightHeight();
     });
-
     window.addEventListener('resize', function(){
         if (typeOfButtons === 'video') { // Проверьте правильность переменной
             if (window.innerWidth <= 1100){
@@ -418,10 +366,8 @@ function waitForData() {
             }
         }
     });
-
     }
 }
-
 let toMenuBtn = document.querySelector('#backward_button');
 toMenuBtn.onclick = () => {
     if (document.getElementById('content__litera_btn_1') || document.querySelector('#video_content_0')) {
@@ -433,6 +379,4 @@ toMenuBtn.onclick = () => {
     }
     //
 };
-
 waitForData();
-

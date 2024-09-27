@@ -36,7 +36,7 @@ function checkParagraph(){
         var imgElement;
         if (imageObj.image_path.includes(".jpg") || imageObj.image_path.includes(".png")){
             imgElement = document.createElement('img');
-        } else if (imageObj.image_path.includes(".mp4")){
+        }else if (imageObj.image_path.includes(".mp4")){
             imgElement = document.createElement('video');
             imgElement.controls = "controls";
         }
@@ -172,11 +172,10 @@ function checkParagraph(){
                 listItems[0].children[i].classList.add('incorrect');
                 listItems[0].children[i].classList.remove('correct');
                 partiallyCorrect = true;
-            } else{
+            }else{
                 listItems[0].children[i].classList.add('correct');
                 listItems[0].children[i].classList.remove('incorrect');
                 partiallyCorrect = true;
-
             }
         }
         if (!isCorrect){

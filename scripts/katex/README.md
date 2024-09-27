@@ -1,8 +1,8 @@
 <h1><a href="https://katex.org/">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://katex.org/img/katex-logo.svg">
-    <img alt="KaTeX" width=130 src="https://katex.org/img/katex-logo-black.svg">
-  </picture>
+    <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://katex.org/img/katex-logo.svg">
+        <img alt="KaTeX" width=130 src="https://katex.org/img/katex-logo-black.svg">
+    </picture>
 </a></h1>
 
 [![npm](https://img.shields.io/npm/v/katex.svg)](https://www.npmjs.com/package/katex)
@@ -36,17 +36,17 @@ Try out KaTeX [on the demo page](https://katex.org/#demo)!
 <!DOCTYPE html>
 <!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly -->
 <html>
-  <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 
-    <!-- The loading of KaTeX is deferred to speed up page rendering -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+        <!-- The loading of KaTeX is deferred to speed up page rendering -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
 
-    <!-- To automatically render math in text elements, include the auto-render extension: -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
-  </head>
-  ...
+        <!-- To automatically render math in text elements, include the auto-render extension: -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+                onload="renderMathInElement(document.body);"></script>
+    </head>
+    ...
 </html>
 ```
 
@@ -61,16 +61,16 @@ For example:
 
 ```js
 katex.render("c = \\pm\\sqrt{a^2 + b^2}", element, {
-    throwOnError: false
+        throwOnError: false
 });
 ```
 
 Call `katex.renderToString` to generate an HTML string of the rendered math,
-e.g., for server-side rendering.  For example:
+e.g., for server-side rendering. For example:
 
 ```js
 var html = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}", {
-    throwOnError: false
+        throwOnError: false
 });
 // '<span class="katex">...</span>'
 ```
@@ -81,7 +81,7 @@ JavaScript on the client.
 
 The examples above use the `throwOnError: false` option, which renders invalid
 inputs as the TeX source code in red (by default), with the error message as
-hover text.  For other available options, see the
+hover text. For other available options, see the
 [API documentation](https://katex.org/docs/api.html),
 [options documentation](https://katex.org/docs/options.html), and
 [handling errors documentation](https://katex.org/docs/error.html).
