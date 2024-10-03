@@ -1,3 +1,4 @@
+document.getElementById('control_button_1').classList.add('disabled');
 let stepMarkerPlace = document.querySelector('.step_marker');
 let backButton  = document.querySelector('#control_button_1');
 let ansverButton  = document.querySelector('#control_button_2');

@@ -92,7 +92,6 @@ function waitForData() {
                     img = document.createElement('video');
                     img.controls = "controls";
                 }
-                // var img = document.createElement('img');
                 img.src = imageInfo.image_path;
                 img.alt = 'Проверьте image_path';
                 imageDiv.appendChild(img);
@@ -137,19 +136,22 @@ function waitForData() {
                 // Функция для установки обработчиков кликов на div элементы
                 function initializeDivClickHandlers() {
                     document.querySelectorAll('.answer_div').forEach(div => {
-                        div.addEventListener('click', function() {
-                            var input = this.querySelector('input[type="radio"], input[type="checkbox"]');
-                            if (input) {
-                                // Для радиокнопок устанавливаем значение в true
-                                if (input.type === 'radio') {
-                                    input.checked = true;
+                        div.addEventListener('click', function(event) {
+                            // Проверяем, что клик был не на input элементе
+                            if (event.target.tagName !== 'INPUT') {
+                                var input = this.querySelector('input[type="radio"], input[type="checkbox"]');
+                                if (input) {
+                                    // Для радиокнопок устанавливаем значение в true
+                                    if (input.type === 'radio') {
+                                        input.checked = true;
+                                    }
+                                    // Для чекбоксов инвертируем текущее состояние
+                                    else if (input.type === 'checkbox') {
+                                        input.checked = !input.checked;
+                                    }
+                                    // Обновляем состояние кнопки после выбора
+                                    updateButtonState();
                                 }
-                                // Для чекбоксов инвертируем текущее состояние
-                                else if (input.type === 'checkbox') {
-                                    input.checked = !input.checked;
-                                }
-                                // Обновляем состояние кнопки после выбора
-                                updateButtonState();
                             }
                         });
                     });
@@ -229,8 +231,11 @@ function waitForData() {
         var currentIndex = `index_${number}`; // Текущий индекс
         var previousIndex = findPreviousParagraph1(currentIndex);
         function toTheoryPage() {
-            backWardBtn.classList.remove('gray_dis');
-            backWardBtn.disabled = false;
+            window.alert("Вы потратили все попытки для прохождения задания, вернемся на страницу теории и попробуем снова...");
+            if(number !== 1){
+                backWardBtn.classList.remove('gray_dis');
+                backWardBtn.disabled = false;
+            }
             localStorage.setItem(`attempts_${number}`, '2'); // Устанавливаем 2 попытки
             document.getElementById('control_button_2').style.display = 'inline-block';
             answerButton.classList.add('gray_dis');
@@ -239,8 +244,10 @@ function waitForData() {
             for (var i = 1; i <= steps; i++) {
                 document.getElementById('control_button_1').click();
             }
-            backWardBtn.classList.remove('gray_dis');
-            backWardBtn.disabled = false;
+            if(number !== 1){
+                backWardBtn.classList.remove('gray_dis');
+                backWardBtn.disabled = false;
+            }
             nextBtn.classList.remove('gray_dis');
             nextBtn.disabled = false;
         };
@@ -274,6 +281,13 @@ function waitForData() {
                         }
                     } else {
                         if (correctAnswers.includes(parseInt(input.value))) {
+                            // Проходим по каждому элементу
+                            inputs.forEach(input => {
+                                // Проверяем тип input
+                                if (input.type !== 'radio') {
+                                    answerDiv.classList.add('incorrect');
+                                };
+                            });
                             allCorrect = false;
                             partiallyCorrect = true;
                         }

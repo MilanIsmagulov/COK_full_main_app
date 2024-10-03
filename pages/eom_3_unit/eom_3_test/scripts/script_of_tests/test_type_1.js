@@ -120,8 +120,33 @@ function waitForData() {
                         answerButton.disabled = true;
                     }
                 }
+                // Функция для установки обработчиков кликов на div элементы
+                function initializeDivClickHandlers() {
+                    document.querySelectorAll('.answer_div').forEach(div => {
+                        div.addEventListener('click', function(event) {
+                            // Проверяем, что клик был не на input элементе
+                            if (event.target.tagName !== 'INPUT') {
+                                var input = this.querySelector('input[type="radio"], input[type="checkbox"]');
+                                if (input) {
+                                    // Для радиокнопок устанавливаем значение в true
+                                    if (input.type === 'radio') {
+                                        input.checked = true;
+                                    }
+                                    // Для чекбоксов инвертируем текущее состояние
+                                    else if (input.type === 'checkbox') {
+                                        input.checked = !input.checked;
+                                    }
+                                    // Обновляем состояние кнопки после выбора
+                                    updateButtonState();
+                                }
+                            }
+                        });
+                    });
+                }
                 // Инициализация состояния кнопки при загрузке страницы
                 updateButtonState();
+                // Инициализация обработчиков кликов на div элементы при загрузке страницы
+                initializeDivClickHandlers();
                 // Добавление слушателей событий для input элементов
                 form.querySelectorAll('input').forEach((input) => {
                     input.addEventListener('change', updateButtonState);

@@ -49,8 +49,13 @@ p{
     margin-left: 25px;
     margin-right: 25px;
 }
+video{
+    margin-top: 15px;
+    max-width: 800px;
+    border-radius: 15px;
+}
 .hidden, .disabled{
-    display: none;
+    display: none !important;
 }
 #contentWrapper::-webkit-scrollbar {
     width: 10px;
@@ -356,12 +361,15 @@ p{
 #dynamic-content{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 .image_test_type_2{
+    display: flex;
+    flex-grow: 1;
     min-width: 500px;
     width: 50%;
+    min-height: 100% !important;
     margin-right: clamp(25px,1.25vw,50px);
     margin-left: 25px;
 }
@@ -369,6 +377,7 @@ p{
     width: 100%;
 }
 .description_w_input {
+    margin-top: 15px;
     width: 65%;
     margin-left: 25px;
 }

@@ -42,7 +42,7 @@ function checkParagraph(){
         }
         imgElement.src = imageObj.image_path
         imgElement.alt = 'Test Image';
-        imgElement.className = 'test-image';
+        imgElement.className = 'test_image';
         mainWrapper.appendChild(imgElement);
     }
     contentDiv.appendChild(mainWrapper);
@@ -139,8 +139,11 @@ function checkParagraph(){
     var currentIndex = `index_${number}`; // Текущий индекс
     var previousIndex = findPreviousParagraph1(currentIndex);
     function toTheoryPage(){
-        backWardBtn.classList.remove('gray_dis');
-        backWardBtn.disabled = false;
+        window.alert("Вы потратили все попытки для прохождения задания, вернемся на страницу теории и попробуем снова...");
+        if(currentPageIndex !== 1){
+            backWardBtn.classList.remove('gray_dis');
+            backWardBtn.disabled = false;
+        }
         localStorage.setItem(`attempts_${number}`, '2'); // Устанавливаем 2 попытки
         document.getElementById('control_button_2').style.display = 'inline-block';
         answerButton.classList.add('gray_dis');
@@ -149,8 +152,10 @@ function checkParagraph(){
         for (var i = 1; i <= steps; i++){
             document.getElementById('control_button_1').click();
         }
-        backWardBtn.classList.remove('gray_dis');
-        backWardBtn.disabled = false;
+        if(currentPageIndex !== 1){
+            backWardBtn.classList.remove('gray_dis');
+            backWardBtn.disabled = false;
+        }
         nextBtn.classList.remove('gray_dis');
         nextBtn.disabled = false;
     }

@@ -161,6 +161,7 @@ function waitForData(){
             };
             // Проверка наличия параграфов на странице
             if (pageData.hasOwnProperty('paragraph_1')){
+                document.getElementById('control_button_2').classList.add('disabled');
                 // Перебор всех параграфов страницы
                 for (let key in pageData){
                     if (key.startsWith('paragraph_')){
@@ -179,6 +180,7 @@ function waitForData(){
                     };
                 };
             } else if (pageData.hasOwnProperty('test')){
+                document.getElementById('control_button_2').classList.remove('disabled');
                 const answerBtn = document.getElementById('control_button_2');
                 answerBtn.classList.remove('hidden');
                 pageData.test.forEach(testItem =>{
